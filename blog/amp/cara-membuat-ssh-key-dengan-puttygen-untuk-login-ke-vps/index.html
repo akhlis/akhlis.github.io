@@ -1,0 +1,586 @@
+<!doctype html><html amp lang="en"><head><meta charset="utf-8"><title>Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS - Publii</title><meta name="description" content="Penggunaan password untuk login ke server memiliki celah keamanan yang berbahaya, untuk mengatasi hal tersebut gunakanlah SSH Key sebagai pengganti password."><link rel="canonical" href="https://publii.id/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"><meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1"><link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet" type="text/css"><script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script><script async custom-element="amp-social-share" src="https://cdn.ampproject.org/v0/amp-social-share-0.1.js"></script><script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js"></script><script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script><script type="application/ld+json">{"@context":"http://schema.org","@type":"Article","mainEntityOfPage":{"@type":"WebPage","@id":"https://publii.id/amp/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"},"headline":"Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS","datePublished":"2017-11-02T17:12","dateModified":"2018-12-25T10:15","image":{"@type":"ImageObject","url":"https://publii.id/media/posts/24/membuat-ssh-key.jpg","height":560,"width":780},"description":"Saat anda memutuskan beralih dari _shared hosting_ konvensional menuju VPS, maka anda harus mulai terbiasa dan paham cara menggunakan SSH. Karena semua aktifitas anda&hellip;","author":{"@type":"Person","name":"Akhlis"},"publisher":{"@type":"Organization","name":"Akhlis","logo":{"@type":"ImageObject","url":"https://publii.id/media/website/publii-logo.png","height":38,"width":130}}}</script><style amp-custom>article,
+aside,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+  display: block; }
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
+
+amp-img {
+  max-width: 100%; }
+
+button,
+input,
+select,
+textarea {
+  font: inherit; }
+
+html {
+  font-size: 1rem; }
+
+body {
+  background: #f1f1f1;
+  color: #262626;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  line-height: 1.6; }
+
+a {
+  color:  #039be5;
+  text-decoration: none;
+  -webkit-transition: all 0.12s linear 0s;
+  -o-transition: all 0.12s linear 0s;
+  transition: all 0.12s linear 0s; }
+
+a:hover {
+  color: #262626;
+  text-decoration: underline;
+  -webkit-text-decoration-skip: ink;
+  text-decoration-skip: ink; }
+
+a:active {
+  color: #262626; }
+
+a:focus {
+  outline: 2px dotted #039be5; }
+
+figure,
+blockquote,
+p,
+ul,
+ol,
+dl,
+table,
+hr,
+fieldset {
+  margin-top: 1.6rem; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #262626;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 2.13333rem; }
+
+h1 {
+  font-size: 1.67583rem;
+  font-weight: normal; }
+
+h2 {
+  font-size: 1.4729rem; }
+
+h3 {
+  font-size: 1.29454rem; }
+
+h4 {
+  font-size: 1.13778rem; }
+
+h5 {
+  font-size: 1rem; }
+
+h6 {
+  font-size: 0.87891rem; }
+
+h2 + p,
+h3 + p,
+h4 + p,
+h5 + p,
+h6 + p {
+  margin-top: 0.8rem; }
+
+b,
+strong {
+  font-weight: 600; }
+
+blockquote {
+  color: #6c7175;
+  font-family: "Droid Serif", "Times", "Source Serif Pro", serif;
+  font-style: italic;
+  padding: 1.33333rem 0.53333rem 1.33333rem 3.2rem;
+  position: relative; }
+  blockquote:before {
+    display: block;
+    content: "\201C";
+    font-size: 4.41226rem;
+    position: absolute;
+    left: 0;
+    top: -12px;
+    color: rgba(108, 113, 117, 0.5); }
+  blockquote > :nth-child(1) {
+    margin-top: 0; }
+
+ul,
+ol {
+  margin-left: 2rem; }
+  ul > li,
+  ol > li {
+    list-style: inherit;
+    padding: 0 0 0.26667rem 0.26667rem; }
+
+dl dt {
+  color: #262626;
+  font-weight: 600; }
+
+code,
+pre {
+  background-color: #f1f1f1;
+  font-family: monospace; }
+
+pre {
+  margin: 1.6rem 0 0;
+  padding: 1.6rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto; }
+  pre > code {
+    color: #262626;
+    padding: 0; }
+
+code {
+  border-radius: 3px;
+  color: #262626;
+  padding: 0.26667rem 0.53333rem; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid #d4d4d4;
+  width: 100%;
+  overflow-x: auto;
+  vertical-align: top;
+  text-align: left;
+  white-space: nowrap; }
+  table th {
+    font-weight: 500;
+    padding: 0.53333rem 1.06667rem; }
+  table tr {
+    border-bottom: 1px solid #d4d4d4; }
+    table tr:nth-child(2n) {
+      background: #f1f1f1; }
+  table td {
+    padding: 0.53333rem 1.06667rem; }
+
+figcaption {
+  clear: both;
+  color: rgba(108, 113, 117, 0.6);
+  font-size: 0.82397rem;
+  margin: 0.8rem 0 0;
+  text-align: center; }
+
+sub,
+sup {
+  font-size: 65%; }
+
+hr {
+  border: 0;
+  height: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.btn, [type=button],
+[type=submit],
+button {
+  background: #039be5;
+  border: none;
+  border-radius: 2px;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 0.87891rem;
+  font-weight: 500;
+  line-height: 1.9;
+  padding: 0.53333rem 1.33333rem;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all .15s ease;
+  -o-transition: all .15s ease;
+  transition: all .15s ease;
+  width: auto; }
+  .btn:hover, [type=button]:hover,
+  [type=submit]:hover,
+  button:hover {
+    background: #262626;
+    color: #ffffff; }
+  .btn:focus, [type=button]:focus,
+  [type=submit]:focus,
+  button:focus {
+    outline: none; }
+  .btn-outline {
+    border: 1px solid #ddd;
+    background: #ffffff;
+    border-radius: 3px;
+    color: #262626; }
+
+[type=button],
+[type=submit],
+button {
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  -moz-appearance: none; }
+
+.navbar {
+  background: #039be5;
+  -webkit-box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.2);
+  line-height: 3;
+  max-height: 4rem; }
+  .navbar > div {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: left;
+    max-width: 700px;
+    margin: 0 auto; }
+  .navbar a {
+    color: #ffffff;
+    text-decoration: none; }
+  .navbar-sidebar-toggle {
+    left: 0;
+    position: relative;
+    text-indent: -99999rem; }
+    .navbar-sidebar-toggle:before {
+      content: "";
+      display: block;
+      border-top: 0.375rem double #ffffff;
+      border-bottom: 0.125rem solid #ffffff;
+      height: 0.125rem;
+      position: absolute;
+      text-indent: 0;
+      top: 50%;
+      width: 1.3rem;
+      -webkit-transform: translate(0px, -50%);
+      -ms-transform: translate(0px, -50%);
+      transform: translate(0px, -50%); }
+
+
+.logo {
+                    background-image: url('https://publii.id/media/website/publii-logo.png');
+                    background-size: auto 2rem;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+            display: inline-block;
+  font-weight: 600;
+  line-height: 1;
+            margin: 0 auto;
+            height: 2rem;
+            text-indent: -9999px;
+            width: 240px;vertical-align: middle;
+        }
+        .logo.logo-text {
+            line-height: 2;
+            text-align: center;
+            text-indent: 0;
+        }
+
+amp-sidebar {
+  background: #ffffff;
+  width: 240px; }
+  amp-sidebar > ul {
+    margin: 0.8rem 0 0;
+    padding: 0; }
+    amp-sidebar > ul ul {
+      border-left: 1px solid #d4d4d4;
+      margin: 0.53333rem 0 0; }
+    amp-sidebar > ul li {
+      color: #262626;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      list-style: none;
+      line-height: 1.4;
+      padding: 0.42667rem 1.06667rem; }
+      amp-sidebar > ul li li {
+        font-weight: normal;
+        padding: 0.26667rem 0 0.26667rem 1.06667rem; }
+    amp-sidebar > ul a,
+    amp-sidebar > ul a:visited {
+      color: #262626; }
+
+.bg-white {
+  background: #ffffff; }
+
+.wrap-page {
+  max-width: 700px;
+  margin: 0 auto; }
+
+@media all and (max-width: 43.6875em) {
+  .wrap-inner {
+    padding: 0 6%; } }
+
+.page-title {
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  margin-bottom: 0.8rem;
+  padding: 1.6rem 6%; }
+  .page-title > h1 {
+    margin: 0;
+    font-size: 1.29454rem; }
+  .page-title > p {
+    font-size: 0.87891rem;
+    color: #6c7175;
+    line-height: 1.3;
+    margin: 0.26667rem 0 0; }
+  .page-title-author {
+    border-radius: 50%;
+    float: left;
+    height: 2.5rem;
+    width: 2.5rem; }
+    .page-title-author + h1 {
+      margin-left: 3.5rem; }
+      .page-title-author + h1 + p {
+        margin-left: 3.5rem; }
+
+.card {
+  background: #ffffff;
+  -webkit-box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  box-shadow: 0 2px 3px rgba(38, 38, 38, 0.1);
+  margin-bottom: 0.8rem;
+  padding-bottom: 1.06667rem; }
+
+  .card-meta {
+    border-top: 1px solid #d4d4d4;
+    color: rgba(108, 113, 117, 0.6);
+    font-size: 0.7242rem;
+    font-weight: 500;
+    margin-top: 1.06667rem;
+    padding-top: 1.06667rem;
+    text-transform: uppercase; }
+    .card-meta a + time:before {
+      content: "";
+      background: #d4d4d4;
+      display: inline-block;
+      height: 3px;
+      margin: 0 8px;
+      width: 3px;
+      vertical-align: middle;
+      border-radius: 50%; }
+  .card-text {
+    font-size: 0.9375rem;
+    overflow: hidden;
+    padding: 0 6%; }
+    .card-text h2 {
+      font-size: 1.13778rem; }
+
+.post {
+  margin-bottom: 2.13333rem; }
+  .post-featured-image {
+    margin-top: 0;
+    position: relative; }
+    .post-featured-image > figcaption {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 3px;
+      color: #ffffff;
+      position: absolute;
+      bottom: 0.8rem;
+      padding: 0 0.26667rem;
+      right: 6%; }
+  .post-header {
+    margin-bottom: 2.13333rem; }
+  .post-meta {
+    border-bottom: 1px solid #d4d4d4;
+    color: rgba(108, 113, 117, 0.6);
+    font-size: 0.7242rem;
+    font-weight: 500;
+    margin-top: 1.06667rem;
+    padding-bottom: 1.06667rem;
+    text-transform: uppercase; }
+    .post-meta a + time:before {
+      content: "";
+      background: #d4d4d4;
+      display: inline-block;
+      height: 3px;
+      margin: 0 8px;
+      width: 3px;
+      vertical-align: middle;
+      border-radius: 50%; }
+  .post-tag {
+    margin: 0; }
+    .post-tag > li {
+      display: inline-block;
+      padding: 0; }
+      .post-tag > li a {
+        background: #f1f1f1;
+        border-radius: 2px;
+        color: #6c7175;
+        font-size: 0.77248rem;
+        display: inline-block;
+        margin: 0 0.26667rem 0.26667rem 0;
+        padding: 0.26667rem 0.53333rem; }
+        .post-tag > li a:hover {
+          background: #039be5;
+          color: #ffffff;
+          text-decoration: none; }
+  .post-share {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    margin-top: 1.6rem;
+    width: 100%; }
+    .post-share amp-social-share {
+      -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+      flex: 1 0 auto;
+      background-size: 24px; }
+  .post-scroll {
+    color: #ffffff;
+    background: #039be5;
+    bottom: 10px;
+    border-radius: 50%;
+    border: none;
+    -webkit-box-shadow: 0 1px 1.5px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.24);
+    box-shadow: 0 1px 1.5px 0 rgba(38, 38, 38, 0.12), 0 1px 1px 0 rgba(38, 38, 38, 0.24);
+    font-size: 1.13778rem;
+    height: 46px;
+    opacity: 0;
+    outline: none;
+    position: fixed;
+    padding: 0;
+    right: 4%;
+    visibility: hidden;
+    width: 46px;
+    z-index: 9999; }
+    .post-scroll-marker {
+      height: 0px;
+      position: absolute;
+      top: 100px;
+      width: 0px; }
+        .post-pagination {
+    background: #f1f1f1;
+    -webkit-box-shadow: inset 0 2px 3px rgba(38, 38, 38, 0.1);
+    box-shadow: inset 0 2px 3px rgba(38, 38, 38, 0.1);
+    border-top: 1px solid #d4d4d4;
+    padding: 1.06667rem 0; }
+    .post-pagination > div {
+      line-height: 1.2;
+      padding: 0.53333rem 1.06667rem;
+      text-align: center; }
+      .post-pagination > div span {
+        display: block;
+        color: #6c7175;
+        font-size: 0.7242rem;
+        font-weight: 500;
+        margin-bottom: 0.26667rem;
+        text-transform: uppercase; }
+    .post-pagination-prev a:before {
+      content: "\2190";
+      margin-right: 0.26667rem; }
+    .post-pagination-next a:after {
+      content: "\2192";
+      margin-left: 0.26667rem; }
+
+aside {
+  margin: 1.6rem 0 0; }
+
+.align-left {
+  text-align: left; }
+
+.align-right {
+  text-align: right; }
+
+.align-center {
+  text-align: center; }
+
+.align-justify {
+  text-align: justify; }
+
+.msg {
+  border-left: 2px solid transparent;
+  padding: 1.06667rem 1.06667rem; }
+  .msg--highlight {
+    background-color: #fff8e6;
+    border-color: #e2ac4f; }
+  .msg--info {
+    background: rgba(45, 97, 201, 0.03);
+    border-color: #039be5; }
+  .msg--success {
+    background: #f7fbf6;
+    border-color: #5ab44b; }
+  .msg--warning {
+    background: #fff3f3;
+    border-color: #c06367;
+    color: #a94442; }
+
+.dropcap:first-letter {
+  float: left;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 2.16943rem;
+  line-height: 0.7;
+  margin-right: 0.53333rem;
+  padding: 0.53333rem 0.53333rem 0.53333rem 0; }
+
+.pagination {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  margin: 0.8rem 0; }
+  .pagination > a {
+    padding-left: 0;
+    padding-right: 0;
+    width: 49%; }
+  .pagination-right {
+    margin-left: auto; }
+
+.bottom {
+  background: #039be5;
+  color: #ffffff;
+  padding: 1.06667rem 4%;
+  text-align: center; }</style><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript><script async src="https://cdn.ampproject.org/v0.js"></script><script custom-element="amp-animation" src="https://cdn.ampproject.org/v0/amp-animation-0.1.js" async></script><script custom-element="amp-position-observer" src="https://cdn.ampproject.org/v0/amp-position-observer-0.1.js" async></script></head><body class="bg-white"><nav class="navbar wrap-inner" id="top"><div><a on="tap:navbar-sidebar.toggle" class="navbar-sidebar-toggle" title="Menu">Menu</a> <a class="logo" href="https://publii.id/amp">Publii</a></div></nav><main class="wrap-page"><article class="post"><figure class="post-featured-image"><amp-img src="https://publii.id/media/posts/24/membuat-ssh-key.jpg" alt="membuat ssh key" srcset="https://publii.id/media/posts/24/responsive/membuat-ssh-key-xs.jpg 300w ,https://publii.id/media/posts/24/responsive/membuat-ssh-key-sm.jpg 480w ,https://publii.id/media/posts/24/responsive/membuat-ssh-key-md.jpg 768w" sizes="(max-width: 768px) 100vw, 768px" height="560" layout="responsive" width="780"></amp-img></figure><div class="wrap-inner"><header class="post-header"><h1>Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS</h1><p class="post-meta">By <a href="https://publii.id/amp/authors/akhlis/" rel="nofollow" title="Akhlis">Akhlis</a> <time datetime="2017-11-02T17:12">November 2, 2017</time></p></header><div><div>Saat anda memutuskan beralih dari _shared hosting_ konvensional menuju VPS, maka anda harus mulai terbiasa dan paham cara menggunakan SSH. Karena semua aktifitas anda dalam mengelola server VPS itu dilakukan melalui SSH.</div><br><div>## Apa itu SSH?</div><div>SSH (Secure Shell) adalah protokol terenkripsi yang digunakan untuk mengelola dan berkomunikasi antara klien dan server.</div><br><div>Jadi semua otentikasi pengguna, _commands, output_, dan transfer file itu akan dienkripsi agar terlindung dari serangan hacker pada jaringan internet yang digunakan.</div><br><div>Ketika menggunakan server Linux pada VPS, anda akan menghabiskan banyak waktu dalam menggunakan terminal agar bisa terhubung ke server melalui SSH.</div><br><div>Untuk menjalankan SSH itu diperlukan aplikasi SSH Clien yang bernama [OpenSSH](https://www.ssh.com/ssh/openssh/). Biasanya aplikasi tersebut sudah pra-instal pada sistem operasi Linux atau Unix.</div><br><div>Namun jika anda pengguna Windows, anda harus menginstal dulu salah satu aplikasi SSH Clien alternatif berikut ini.</div><div>- [PuTTY (Gratis)](https://www.ssh.com/ssh/putty/)</div><div>- [WinSCP](https://www.ssh.com/ssh/winscp/)</div><div>- [FileZilla](https://www.ssh.com/ssh/filezilla/)</div><br><div>Anda bisa login ke server lewat SSH dengan cara memasukkan username dan password yang dikirim ke emailmu oleh penyedia VPS. Tapi agar server anda lebih aman, sebaiknya gunakan login `SSH Key` daripada menggunakan password.</div><br><div>## Apa itu SSH Key</div><div>Penggunaan user name dan password untuk login ke VPS masih memiliki celah keamanan yang berbahaya.</div><br><div>Karena password tersebut bisa dengan mudah diretas seseorang melalui jaringan internet dengan menggunakan serangan [_brute-force_](https://en.wikipedia.org/wiki/Brute-force_attack).</div><br><div>Untuk mengatasi hal tersebut, maka gunakanlah SSH Key sebagai pengganti password. Karena SSH Key menerapkan cara untuk login ke VPS dengan sistem keamanan yang lebih kuat dibanding password.</div><br><div>SSH Key melakukan otentikasi berdasarkan kunci kriptografi dengan membuat sepasang _public dan private key_ yang hampir tidak bisa diretas.</div><br><div>_Public key_ itu nantinya diletakkan pada server VPS, sedangkan yang _private key_ tetap ditaruh pada laptop kita. _Private key_ digunakan untuk mengakses server sebagai pengganti password.</div><br><div>Untuk lebih mudah memahaminya, _public key_ itu diibaratkan sebagai gembok, sedangkan _private key_ itu sebagai kuncinya.</div><br><div>Karena itulah jaga baik-baik _private key_ anda jangan sampai hilang atau diambil orang lain. Jika _private key_ tersebut sampai hilang, maka anda tidak bisa lagi login ke VPS anda.</div><br><div>## Cara Membuat SSH Key Menggunakan PuTTYgen</div><div>SSH Key bisa dibuat dengan cara menggunakan key-generator.</div><br><div>Bagi pengguna Windows, anda bisa menggunakan aplikasi [PuTTYgen](https://www.ssh.com/ssh/putty/windows/) untuk membuatnya. Untuk pengguna [Linux](https://www.ssh.com/ssh/putty/linux/) dan [Mac](https://www.ssh.com/ssh/putty/mac/), juga bisa menggunakan PuTTyGen versi masing-masing tentunya.</div><br><div>PuTTYgen adalah tool key generator untuk membuat SSH Key dengan PuTTY. Fungsi utamanya untuk membuat pasangan _public key_ dan _private key_.</div><br><div>PuTTY membuat key dalam formatnya sendiri yang disebut file `.ppk`. Tetapi tool tersebut juga bisa mengubah key dari dan ke beberapa format tool SSH lainnya.</div><br><div>Ikuti langkah-langkah berikut ini untuk membuat SSH Key dengan PuTTYgen:</div><br><div>1. Download aplikasi PuTTY di [www.putty.org](http://www.putty.org/) kemudian instal pada laptop anda.</div><div>2. Jalankan PuTTYgen yang telah terinstal bersama PuTTY tadi.</div><div>3. Pilih `SSH-1 (RSA)` pada `Type of key to generate`.</div><div>4. Pastikan `Number of bits in a generated key` terisi dengan angka 2048 atau 4096. Ini menentukan seberapa kuat keamanan kuncinya agar tidak mudah dibobol menggunakan metode brute force.</div><div><amp-img src="https://publii.id/media/posts/24/generate-key-gen.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/generate-key-gen-xs.png 300w ,https://publii.id/media/posts/24/responsive/generate-key-gen-sm.png 480w ,https://publii.id/media/posts/24/responsive/generate-key-gen-md.png 768w ,https://publii.id/media/posts/24/responsive/generate-key-gen-lg.png 1024w ,https://publii.id/media/posts/24/responsive/generate-key-gen-xl.png 1360w ,https://publii.id/media/posts/24/responsive/generate-key-gen-2xl.png 1600w" alt="generate-key-gen" width="479" height="471" layout="responsive"></amp-img></div><br><div>![generate-key-gen](/images/post/2017/11/generate-key-gen.png)</div><div>5. Klik tombol `Generate` untuk membuat SSH Key.</div><div>6. Gerakkan cursor mouse secara acak pada area kosong dibawah progress bar sampai prosesnya selesai.</div><div><amp-img src="https://publii.id/media/posts/24/moving-the-mouse.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/moving-the-mouse-xs.png 300w ,https://publii.id/media/posts/24/responsive/moving-the-mouse-sm.png 480w ,https://publii.id/media/posts/24/responsive/moving-the-mouse-md.png 768w ,https://publii.id/media/posts/24/responsive/moving-the-mouse-lg.png 1024w ,https://publii.id/media/posts/24/responsive/moving-the-mouse-xl.png 1360w ,https://publii.id/media/posts/24/responsive/moving-the-mouse-2xl.png 1600w" alt="moving-the-mouse" width="479" height="471" layout="responsive"></amp-img></div><br><div>![moving-the-mouse](/images/post/2017/11/moving-the-mouse.png)</div><div>7. Sepasang _public key_ dan _private key_ berhasil dibuat.</div><div>8. Ubah teks yang ada pada kolom `Key comment` (tidak wajib) sesuai identifikasi tujuan penggunaan anda.</div><div><amp-img src="https://publii.id/media/posts/24/rsa-key-nettren.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/rsa-key-nettren-xs.png 300w ,https://publii.id/media/posts/24/responsive/rsa-key-nettren-sm.png 480w ,https://publii.id/media/posts/24/responsive/rsa-key-nettren-md.png 768w ,https://publii.id/media/posts/24/responsive/rsa-key-nettren-lg.png 1024w ,https://publii.id/media/posts/24/responsive/rsa-key-nettren-xl.png 1360w ,https://publii.id/media/posts/24/responsive/rsa-key-nettren-2xl.png 1600w" alt="rsa-key-nettren" width="479" height="471" layout="responsive"></amp-img></div><br><div>![rsa-key-nettren](/images/post/2017/11/rsa-key-nettren.png)</div><div>9. Pada kolom `Key passphrase`, isikan teks yang berfungsi sebagai password setiap kali akan digunakan (sebenarnya tidak wajib, tapi agar lebih aman sebaiknya gunakanlah password).</div><div><amp-img src="https://publii.id/media/posts/24/key-phassphrase-2.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/key-phassphrase-2-xs.png 300w ,https://publii.id/media/posts/24/responsive/key-phassphrase-2-sm.png 480w ,https://publii.id/media/posts/24/responsive/key-phassphrase-2-md.png 768w ,https://publii.id/media/posts/24/responsive/key-phassphrase-2-lg.png 1024w ,https://publii.id/media/posts/24/responsive/key-phassphrase-2-xl.png 1360w ,https://publii.id/media/posts/24/responsive/key-phassphrase-2-2xl.png 1600w" alt="key-phassphrase-2" width="479" height="471" layout="responsive"></amp-img></div><br><div>![key-phassphrase-2](/images/post/2017/11/key-phassphrase-2.png)</div><div>10. Klik `Save public key`,</div><div><amp-img src="https://publii.id/media/posts/24/public-key.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/public-key-xs.png 300w ,https://publii.id/media/posts/24/responsive/public-key-sm.png 480w ,https://publii.id/media/posts/24/responsive/public-key-md.png 768w ,https://publii.id/media/posts/24/responsive/public-key-lg.png 1024w ,https://publii.id/media/posts/24/responsive/public-key-xl.png 1360w ,https://publii.id/media/posts/24/responsive/public-key-2xl.png 1600w" alt="public-key" width="479" height="471" layout="responsive"></amp-img></div><br><div>![public-key](/images/post/2017/11/public-key.png)</div><div>atau salin public key yang telah dibuat ke kolom `Add SSH Key` saat [proses pembuatan droplets](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div><div><amp-img src="https://publii.id/media/posts/24/add-rsa-key-droplets.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-xs.png 300w ,https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-sm.png 480w ,https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-md.png 768w ,https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-lg.png 1024w ,https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-xl.png 1360w ,https://publii.id/media/posts/24/responsive/add-rsa-key-droplets-2xl.png 1600w" alt="add-rsa-key-droplets" width="620" height="517" layout="responsive"></amp-img></div><div> </div><div>![add-rsa-key-droplets](/images/post/2017/11/add-rsa-key-droplets.png)</div><div> </div><div>11. Klik `Save private key` dan beri nama sesukamu dengan ekstensi `.ppk`, jangan sampai hilang atau diambil orang lain. Karena `private key` tersebut digunakan pada komputer kita untuk login ke server. Dan jika file tersebut sampai hilang, maka anda tidak akan bisa lagi masuk ke server anda.</div><div><amp-img src="https://publii.id/media/posts/24/my-private-key.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/my-private-key-xs.png 300w ,https://publii.id/media/posts/24/responsive/my-private-key-sm.png 480w ,https://publii.id/media/posts/24/responsive/my-private-key-md.png 768w ,https://publii.id/media/posts/24/responsive/my-private-key-lg.png 1024w ,https://publii.id/media/posts/24/responsive/my-private-key-xl.png 1360w ,https://publii.id/media/posts/24/responsive/my-private-key-2xl.png 1600w" alt="my-private-key" width="669" height="473" layout="responsive"></amp-img></div><br><div>![my-private-key](/images/post/2017/11/my-private-key.png)</div><br><div>Oya, perlu anda ketahui sebelumnya, proses pembuatan SSH Key diatas itu dilakukan sebelum anda membuat droplets pada Digital Ocean, jadi _public key_ tersebut ditambahkan ke server saat [proses pembuatan droplets](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div><br><div>Atau anda juga bisa menambahkan SSH Key terlebih dahulu pada menu akun Digital Ocean dengan cara masuk ke menu `Setting &gt; Security &gt; Add SSH Key`. Setelah itu baru [membuat dropletnya](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div><div><amp-img src="https://publii.id/media/posts/24/add-ssh-key-setting.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/add-ssh-key-setting-xs.png 300w ,https://publii.id/media/posts/24/responsive/add-ssh-key-setting-sm.png 480w ,https://publii.id/media/posts/24/responsive/add-ssh-key-setting-md.png 768w ,https://publii.id/media/posts/24/responsive/add-ssh-key-setting-lg.png 1024w ,https://publii.id/media/posts/24/responsive/add-ssh-key-setting-xl.png 1360w ,https://publii.id/media/posts/24/responsive/add-ssh-key-setting-2xl.png 1600w" alt="add-ssh-key-setting" width="1101" height="424" layout="responsive"></amp-img></div><br><div>![add-ssh-key-setting](/images/post/2017/11/add-ssh-key-setting.png)</div><br><div>## Cara Memasang SSH Key pada Server</div><div>Bagi anda yang sudah terlanjur membuat droplets duluan sebelum memasang SSH Key, ikuti cara memasang _public key_ berikut ini.</div><br><div>1. Login seperti biasa lewat SSH ke server. Atau bisa juga login menggunakan access console pada droplets.</div><div><amp-img src="https://publii.id/media/posts/24/launch-console.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/launch-console-xs.png 300w ,https://publii.id/media/posts/24/responsive/launch-console-sm.png 480w ,https://publii.id/media/posts/24/responsive/launch-console-md.png 768w ,https://publii.id/media/posts/24/responsive/launch-console-lg.png 1024w ,https://publii.id/media/posts/24/responsive/launch-console-xl.png 1360w ,https://publii.id/media/posts/24/responsive/launch-console-2xl.png 1600w" alt="launch-console" width="969" height="424" layout="responsive"></amp-img></div><div> </div><div>![launch-console](/images/post/2017/11/launch-console.png)</div><div>2. Buatlah folder `.ssh` pada folder `home` user dengan cara:</div><div>```bash</div><div>mkdir -p ~/.ssh</div><div>```</div><div>atau lewati saja jika sudah ada folder tersebut.</div><div>3. Sekarang buatlah atau modifikasi file `authorized_keys` dalam folder `.ssh`.</div><div>```bash</div><div>nano ~/.ssh/authorized_keys</div><div>```</div><div>Kemudian salin _public key_ yang berupa teks dalam kotak `Public key for pasting into authorized_keys file` yang anda buat di PuTTYgen pada langkah nomor 10 diatas, lalu tempelkan pada file authorized_keys.</div><div><amp-img src="https://publii.id/media/posts/24/authorized-key.png" sizes="(max-width: 48em) 100vw, 768px" srcset="https://publii.id/media/posts/24/responsive/authorized-key-xs.png 300w ,https://publii.id/media/posts/24/responsive/authorized-key-sm.png 480w ,https://publii.id/media/posts/24/responsive/authorized-key-md.png 768w ,https://publii.id/media/posts/24/responsive/authorized-key-lg.png 1024w ,https://publii.id/media/posts/24/responsive/authorized-key-xl.png 1360w ,https://publii.id/media/posts/24/responsive/authorized-key-2xl.png 1600w" alt="authorized-key" width="661" height="418" layout="responsive"></amp-img></div><div> </div><div>![authorized-key](/images/post/2017/11/authorized-key.png)</div><div> </div><div>Setelah itu simpan file tersebut dengan cara tekan tombol `ctrl+X &gt; ctrl+Y &gt; enter`</div><br><div>4. Aturlah hak akses folder dan file _authorized_keys_ tersebut (sangat penting).</div><div>```bash</div><div>chmod 0700 ~/.ssh</div><div>chmod 0644 ~/.ssh/authorized_keys</div><div>```</div><br><div>Jika anda mengikuti panduan diatas dengan benar, seharusnya anda sudah bisa login ke server dengan SSH tanpa password.</div><br><div>Gunakanlah aplikasi PuTTY untuk login ke server tersebut, silahkan baca dulu selengkapnya [Cara Menggunakan SSH Key dengan PuTTY pada Droplets Digital Ocean](https://nettren.com/cara-menggunakan-ssh-key-dengan-putty)</div><br><div>### Cara Mematikan Login SSH Menggunakan Username dan Password</div><div>Setelah anda berhasil login ke server, proses selanjutnya yaitu mematikan login SSH menggunakan password.</div><br><div>Hal ini dilakukan untuk meningkatkan keamanan server agar tidak bisa diakses lagi menggunakan username dan password.</div><br><div>Tapi sebelum melakukannya, anda harus memastikan dulu login dengan SSH Key itu benar-benar bekerja dengan baik, karena jika login tersebut masih gagal, tapi anda sudah terlanjur mematikan passwordnya, maka anda tidak bisa lagi login ke server.</div><br><div>Untuk mematikan login password, anda perlu mengedit file konfigurasi SSH pada server. Pada sistem Ubuntu/Debian, file itu terletak pada `/etc/ssh/sshd_config`.</div><div>```bash</div><div>sudo nano /etc/ssh/sshd_config</div><div>```</div><div>Cari dan ubah pilihan seperti berikut</div><div>```bash</div><div>[...]</div><div>PasswordAuthentication no</div><div>[...]</div><div>UsePAM no</div><div>[...]</div><div>```</div><div>Untuk menyimpan tekan `ctrl + X &gt; ctrl + Y &gt; enter`. Kemudian `reload` konfigurasi SSH server</div><div>```bash</div><div>sudo reload ssh</div><div>```</div><br><div>Nah, sekarang anda hanya bisa login ke server menggunakan SSH Key saja. Dan anda tidak perlu lagi khawatir server anda dibobol orang lain.</div><br><div>Tapi anda juga harus menyimpan _private key_ tersebut dengan aman, dan jangan lupa dibackup juga ke akun cloud anda, misalnya di [Dropbox](https://db.tt/P6738Fm8yS) atau Google Drive untuk berjaga-jaga kalau laptop anda rusak atau hilang dicuri orang, anda masih memiliki akses ke server.</div><br><div>Semoga informasi ini bermanfaat bagi anda.</div></div><aside><ul class="post-tag"><li><a href="https://publii.id/amp/tag/digital-ocean/">digital ocean</a></li><li><a href="https://publii.id/amp/tag/hosting/">hosting</a></li><li><a href="https://publii.id/amp/tag/ssl/">ssl</a></li></ul><div class="post-share"><amp-social-share type="system" width="40" height="40" data-param-text="Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS"></amp-social-share><amp-social-share type="facebook" width="40" height="40" data-param-app_id="" data-param-text="Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS" data-param-href="https://publii.id/amp/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"></amp-social-share><amp-social-share type="twitter" width="40" height="40" data-param-text="Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS" data-param-url="https://publii.id/amp/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"></amp-social-share><amp-social-share type="pinterest" width="40" height="40" data-param-url="https://publii.id/amp/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"></amp-social-share><amp-social-share type="tumblr" width="40" height="40" data-param-text="Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS" data-param-url="https://publii.id/amp/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"></amp-social-share><amp-social-share type="whatsapp" width="40" height="40" data-param-text="Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS"></amp-social-share></div></aside></div></article><nav class="post-pagination wrap-inner"><div class="post-pagination-prev"><span>Previous Post</span> <a href="https://publii.id/amp/cara-membuat-droplets-digital-ocean-dengan-benar/">Cara Membuat Droplets Digital Ocean dengan Benar</a></div><div class="post-pagination-next"><span>Next Post</span> <a href="https://publii.id/amp/cara-menggunakan-vps-digital-ocean/">Panduan Lengkap Cara Menggunakan VPS Digital Ocean</a></div></nav></main><amp-animation id="showAnim" layout="nodisplay"><script type="application/json">{
+                    "duration": "200ms",
+                    "fill": "both",
+                    "iterations": "1",
+                    "direction": "alternate",
+                    "animations": [{
+                        "selector": ".post-scroll",
+                        "keyframes": [{
+                            "opacity": "1",
+                            "visibility": "visible",
+                            "transform": "scale(1)"
+                        }]
+                    }]
+                }</script></amp-animation><amp-animation id="hideAnim" layout="nodisplay"><script type="application/json">{
+                    "duration": "200ms",
+                    "fill": "both",
+                    "iterations": "1",
+                    "direction": "alternate",
+                    "animations": [{
+                        "selector": ".post-scroll",
+                        "keyframes": [{
+                            "opacity": "0",
+                            "visibility": "hidden",
+                            "transform": "scale(0.1)"
+                        }]
+                    }]
+                }</script></amp-animation><div class="post-scroll-marker"><amp-position-observer on="enter:hideAnim.start; exit:showAnim.start" layout="nodisplay"></amp-position-observer></div><button class="post-scroll" on="tap:top.scrollTo(duration=200)">&#8593;</button><footer class="bottom">Powered by Publii</footer><amp-sidebar id="navbar-sidebar" layout="nodisplay"><ul><li><a href="https://publii.id/amp/" title="Home">Home</a></li><li><a href="https://publii.id/amp/tag/hosting/" title="hosting">Hosting</a><ul class="submenu submenu-level-2 menu-dropdown"><li><a class="menu-item__link" href="https://publii.id/amp/tag/digital-ocean/" title="digital Ocean" target="_self">Digital Ocean</a></li><li><a class="menu-item__link" href="https://publii.id/amp/tag/ssl/" title="ssl" target="_self">SSL</a></li></ul></li><li><a href="https://publii.id/amp/tag/alat-pembayaran/" title="alat pembayaran">Alat Pembayaran</a></li><li><a href="https://publii.id/amp/blog/">Blog</a></li></ul></amp-sidebar></body></html>

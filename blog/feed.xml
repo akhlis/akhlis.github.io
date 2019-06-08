@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <title>Publii</title>
+    <link href="https://publii.id/feed.xml" rel="self" />
+    <link href="https://publii.id" />
+    <updated>2019-04-11T09:49:17+07:00</updated>
+    <author>
+        <name>Akhlis</name>
+    </author>
+    <id>https://publii.id</id>
+
+    <entry>
+        <title>Cara Menggunakan SSH Key dengan PuTTY untuk Login VPS</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-menggunakan-ssh-key-dengan-putty-untuk-login-vps/"/>
+        <id>https://publii.id/cara-menggunakan-ssh-key-dengan-putty-untuk-login-vps/</id>
+
+        <updated>2018-12-25T10:19:14+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/16/menggunakan-ssh-key.jpg" alt="menggunakan ssh key" />
+                    Salah satu hal yang paling ditakutkan bagi pemilik website yaitu jika website miliknya diretas oleh orang yang tidak bertanggung jawab. Apapun motif peretasannya, entah&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/16/menggunakan-ssh-key.jpg" alt="menggunakan ssh key" />
+                <div>Salah satu hal yang paling ditakutkan bagi pemilik website yaitu jika website miliknya diretas oleh orang yang tidak bertanggung jawab.</div>
+<br>
+<div>Apapun motif peretasannya, entah karena tujuan persaingan bisnis atau cuma sekedar iseng untuk menunjukkan kemampuan hacking seseorang, hal tersebut pasti akan membuat pemilik websitenya kesal dan marah.</div>
+<br>
+<div>Coba bayangkan saja, seandainya anda sebagai pemilik website tersebut. Sudah susah payah membangun website bertahun-tahun, dalam sekejab bisa dibobol orang lain dan mengacak-acak website anda itu. Bagaimana perasaan anda, marah bukan?</div>
+<br>
+<div>Sebenarnya, seseorang bisa meretas website kita itu, belum tentu karena dia memang jago hacking loh. Tapi bisa saja karena memang kita yang lalai menjaga keamanan website kita sendiri.</div>
+<br>
+<div>Misalnya saja jika kita menggunakan VPS sebagai server website, tapi masih login ke server tersebut dengan username dan password, itu berbahaya banget, karena seseorang bisa saja melakukan serangan <a href="https://en.wikipedia.org/wiki/Brute-force_attack">brute-force</a> untuk mencuri password kemudian masuk ke server anda.</div>
+<br>
+<div>Solusinya, gunakan `SSH Key` sebagai pengganti password untuk login ke server. Jika anda pengguna Windows, bisa menggunakan PuTTY untuk meremote server melalui SSH.</div>
+<br>
+<div>PuTTY adalah aplikasi klien SSH dan Telnet untuk Windows. PuTTY memungkinkan anda untuk menghubungkan dan meremote server dengan aman dari komputer windows lokal.</div>
+<br>
+<div>PuTTY menggunakan sepasang file _public key dan private key_ sebagai pengganti password yang disebut dengan SSH Key. Untuk membuatnya silakan ikuti panduan <a href="../../../../../cara-membuat-ssh-key">Cara Membuat SSH Key</a>.</div>
+<br>
+<div>Berikut ini panduan cara menghubungkan komputer windows lokal ke droplets menggunakan PuTTY.</div>
+<ol>
+<li>Pastikan PuTTY sudah terinstal pada komputermu. Kalau belum, download PuTTY dulu <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html">disini</a>, lalu instal di komputermu.</li>
+<li>Jalankan PuTTY, setelah itu masukkan `Host Name (IP address)` servermu pada kolom yang tersedia, dan pastikan menggunakan `port: 22` dengan `Connection type: SSH`.<img src="https://publii.id/media/posts/16/02_masukkan-ip-address.jpg" alt="masukkan ip address" width="452" height="442"></li>
+<li>Pilih category `Auth` pada sidebar di sebelah kiri dengan cara klik menu dropdown `Connection &gt; SSH &gt; Auth`.<br><img src="https://publii.id/media/posts/16/03_buka-private-key.png" alt="buka private key" width="452" height="442"></li>
+<li>Carilah _private key_ yang telah anda buat dengan menekan tombol `browse`, lalu arahkan ke tempat file _private key_ tersimpan.<br><img src="https://publii.id/media/posts/16/04_masukkan-private-key.png" alt="masukkan private key" width="851" height="502">kemudian klik `open` untuk memasukkan _private key_ dengan ekstensi .ppk tersebut.<br><img src="https://publii.id/media/posts/16/05_klik-open-putty.png" alt="klik open putty" width="452" height="442"></li>
+<li>Tekan tombol `Open` untuk masuk ke SSH.</li>
+<li>Terminal PuTTY terbuka, kemudian masuklah ke server sebagai user `root` (login as: root).<br>```bash<br>root<br>```<br><img src="https://publii.id/media/posts/16/06_login-as-root.png" alt="login as root" width="661" height="418"></li>
+<li>Jika anda sudah memiliki `nama pengguna` selain `root`, masuklah dengan `nama pengguna` anda tersebut (misal: akhlis).<br>```bash<br>su - akhlis<br>```<br><img src="https://publii.id/media/posts/16/07_login-as-username.png" alt="login as username" width="661" height="418"><br> </li>
+</ol>
+<div>Setelah berhasil masuk ke server menggunakan PuTTY, anda bisa dengan mudah meremote server menggunakan komputer lokal untuk mengkonfigurasi website anda.</div>
+<br>
+<div>Anda bisa membaca selengkapnya <a href="../../../../../cara-menggunakan-vps-digital-ocean">Panduan Cara Menggunakan VPS</a> agar tidak bingung saat pertama kali menggunakan VPS <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a>.</div>
+<br>
+<div>Semoga informasi ini bermanfaat.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Panduan Lengkap Cara Menggunakan VPS Digital Ocean</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-menggunakan-vps-digital-ocean/"/>
+        <id>https://publii.id/cara-menggunakan-vps-digital-ocean/</id>
+
+        <updated>2018-12-25T10:19:32+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/15/panduan-vps.jpg" alt="panduan vps" />
+                    Jika anda pemilik website, pernah dong pastinya merasakan kesal dengan kinerja website anda yang tiba-tiba melambat, sulit diakses, atau bahkan sering down. Apalagi jika&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/15/panduan-vps.jpg" alt="panduan vps" />
+                <div>Jika anda pemilik website, pernah dong pastinya merasakan kesal dengan kinerja website anda yang tiba-tiba melambat, sulit diakses, atau bahkan sering down.</div>
+<br>
+<div>Apalagi jika ternyata website anda itu merupakan sumber utama penghasilan anda selama ini, aset yang anda bangun bertahun-tahun ketika sudah semakin berkembang, malah sering mengalami gangguan.</div>
+<br>
+<div>Tentu saja, hal itu akan menjadi masalah serius bagi anda karena akan berpengaruh terhadap kepuasan pengunjung website tersebut. Dan anda pasti tidak mau kan gara-gara masalah teknis pada website anda, para pelanggan jadi kabur begitu saja.</div>
+<br>
+<div>Untuk mengatasi masalah seperti itu, anda harus mengetahui terlebih dahulu penyebabnya. Tapi penyebab yang paling umum terjadi yaitu karena anda salah memilih web hosting. Sebelum memilih web hosting, sebaiknya pahami dulu <a href="../../../../../perbedaan-shared-hosting-cloud-hosting-dan-vps">jenis-jenis web hosting</a>.</div>
+<br>
+<div>Mungkin selama ini anda masih menggunakan _shared hosting_ konvensional untuk menjalankan website ya? padahal jika anda masih tetap menggunakan _shared hosting_, sedangkan pengunjung website anda sudah semakin banyak, itu akan memberatkan kinerja website loh.</div>
+<br>
+<div>Solusinya silakan pindahkan website anda dari _shared hosting_ biasa menggunakan VPS.</div>
+<br>
+<div>Sekarang ini sudah banyak penyedia layanan VPS baik lokal maupun luar negeri dengan harga yang relatif terjangkau. Tapi jika anda ingin menggunakan layanan VPS yang sudah benar-benar terpercaya, gunakanlah VPS Digital Ocean.</div>
+<br>
+<div>Kenapa Digital Ocean? karena Digital Ocean itu merupakan layanan VPS paling populer di dunia saat ini. Digital Ocean sudah teruji kualitasnya dan sangat banyak para pebisnis online di Indonesia yang menggunakannya.</div>
+<br>
+<div>Harga yang ditawarkannya pun juga tergolong murah, hanya dengan minimal $5 dolar per bulan saja anda sudah bisa menggunakan cloud server miliknya. Bahkan harga yang ditawarkan itu lebih murah dibanding penyedia VPS lokal menurut pengamatan saya.</div>
+<br>
+<div>Yang menarik, anda juga bisa mendapatkan saldo $10 gratis yang dapat digunakan untuk berlangganan VPS selama 2 bulan jika anda mendaftar akun melalui link <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a> ini.</div>
+<br>
+<div>Digital Ocean memiliki komunitas pengguna yang besar, sehingga bisa dengan mudah mencari tutorialnya jika anda mengalami masalah setting website pada VPS Digital Ocean.</div>
+<br>
+<div>Namun saya yakin saat pertama kali anda menggunakan VPS, pasti akan bingung cara menggunakannya. Apalagi jika anda tidak memiliki latar belakang dalam bidang IT. Karena pada VPS itu tidak disediakan kontrol panel seperti yang sering anda gunakan pada _shared hosting_ selama ini.</div>
+<br>
+<div>Jadi anda sangat memerlukan panduan atau tutorial khusus cara menggunakannya sehingga anda bisa mengkonfigurasi website pada VPS tersebut dengan benar tanpa memakan waktu yang lama.</div>
+<br>
+<div>Karena itulah saya akan membantu anda dalam menggunakan VPS Digital Ocean mulai dari cara membuat droplets sampai website anda bisa digunakan. Saya akan membuat tutorialnya secara berseri agar tidak terlalu panjang dan mudah anda ikuti.</div>
+<h2 id="mcetoc_1cvhlvc6r0">Cara Menggunakan VPS Digital Ocean</h2>
+<ol>
+<li><a href="../../../../../cara-membuat-droplets-digital-ocean">Cara Membuat Droplets Digital Ocean</a></li>
+<li><a href="../../../../../cara-membuat-ssh-key">Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS</a></li>
+<li><a href="../../../../../cara-menggunakan-ssh-key-dengan-putty">Cara Menggunakan SSH Key dengan PuTTY</a></li>
+</ol>
+<div> </div>
+<br>
+<div>Tutorial tersebut ditulis berdasarkan pengalaman pribadi saya sendiri, saya berbagi pengalaman ini karena ingin membantu anda yang merasa kesulitan mengkonfigurasi website pada VPS.</div>
+<br>
+<div>Tujuan saya hanya ingin agar anda tidak capek-capek menghabiskan waktu dan tenaga untuk mencari panduan konfigurasi website pada VPS dengan benar.</div>
+<br>
+<div>Saat pertama kali saya menggunakan VPS itu awalnya sangat bingung cara menggunakannya, bahkan saya menghabiskan waktu berhari-hari hanya untuk mencari panduan dan mengkonfigurasi website saya sampai berjalan normal.</div>
+<br>
+<div>Karena itulah saya tidak ingin anda melakukan hal yang sama seperti yang saya lakukan tersebut. Sebab waktu dan tenaga itu sangat berharga, jangan biarkan hal-hal teknis seperti itu menyita banyak waktu anda, kalau anda bisa belajar dari pengalaman orang lain.</div>
+<br>
+<div>Jika tutorial ini bermanfaat bagi anda, silahkan berkomentar dibawah ini. Dan anda juga bebas membagikan tutorial ini pada teman-teman anda yang lain agar lebih bermanfaat.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Cara Membuat SSH Key dengan PuTTYgen untuk Login ke VPS</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/"/>
+        <id>https://publii.id/cara-membuat-ssh-key-dengan-puttygen-untuk-login-ke-vps/</id>
+
+        <updated>2018-12-25T10:15:56+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/24/membuat-ssh-key.jpg" alt="membuat ssh key" />
+                    Saat anda memutuskan beralih dari _shared hosting_ konvensional menuju VPS, maka anda harus mulai terbiasa dan paham cara menggunakan SSH. Karena semua aktifitas anda&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/24/membuat-ssh-key.jpg" alt="membuat ssh key" />
+                <div>
+<div>Saat anda memutuskan beralih dari _shared hosting_ konvensional menuju VPS, maka anda harus mulai terbiasa dan paham cara menggunakan SSH. Karena semua aktifitas anda dalam mengelola server VPS itu dilakukan melalui SSH.</div>
+<br>
+<div>## Apa itu SSH?</div>
+<div>SSH (Secure Shell) adalah protokol terenkripsi yang digunakan untuk mengelola dan berkomunikasi antara klien dan server.</div>
+<br>
+<div>Jadi semua otentikasi pengguna, _commands, output_, dan transfer file itu akan dienkripsi agar terlindung dari serangan hacker pada jaringan internet yang digunakan.</div>
+<br>
+<div>Ketika menggunakan server Linux pada VPS, anda akan menghabiskan banyak waktu dalam menggunakan terminal agar bisa terhubung ke server melalui SSH.</div>
+<br>
+<div>Untuk menjalankan SSH itu diperlukan aplikasi SSH Clien yang bernama [OpenSSH](https://www.ssh.com/ssh/openssh/). Biasanya aplikasi tersebut sudah pra-instal pada sistem operasi Linux atau Unix.</div>
+<br>
+<div>Namun jika anda pengguna Windows, anda harus menginstal dulu salah satu aplikasi SSH Clien alternatif berikut ini.</div>
+<div>- [PuTTY (Gratis)](https://www.ssh.com/ssh/putty/)</div>
+<div>- [WinSCP](https://www.ssh.com/ssh/winscp/)</div>
+<div>- [FileZilla](https://www.ssh.com/ssh/filezilla/)</div>
+<br>
+<div>Anda bisa login ke server lewat SSH dengan cara memasukkan username dan password yang dikirim ke emailmu oleh penyedia VPS. Tapi agar server anda lebih aman, sebaiknya gunakan login `SSH Key` daripada menggunakan password.</div>
+<br>
+<div>## Apa itu SSH Key</div>
+<div>Penggunaan user name dan password untuk login ke VPS masih memiliki celah keamanan yang berbahaya.</div>
+<br>
+<div>Karena password tersebut bisa dengan mudah diretas seseorang melalui jaringan internet dengan menggunakan serangan [_brute-force_](https://en.wikipedia.org/wiki/Brute-force_attack).</div>
+<br>
+<div>Untuk mengatasi hal tersebut, maka gunakanlah SSH Key sebagai pengganti password. Karena SSH Key menerapkan cara untuk login ke VPS dengan sistem keamanan yang lebih kuat dibanding password.</div>
+<br>
+<div>SSH Key melakukan otentikasi berdasarkan kunci kriptografi dengan membuat sepasang _public dan private key_ yang hampir tidak bisa diretas.</div>
+<br>
+<div>_Public key_ itu nantinya diletakkan pada server VPS, sedangkan yang _private key_ tetap ditaruh pada laptop kita. _Private key_ digunakan untuk mengakses server sebagai pengganti password.</div>
+<br>
+<div>Untuk lebih mudah memahaminya, _public key_ itu diibaratkan sebagai gembok, sedangkan _private key_ itu sebagai kuncinya.</div>
+<br>
+<div>Karena itulah jaga baik-baik _private key_ anda jangan sampai hilang atau diambil orang lain. Jika _private key_ tersebut sampai hilang, maka anda tidak bisa lagi login ke VPS anda.</div>
+<br>
+<div>## Cara Membuat SSH Key Menggunakan PuTTYgen</div>
+<div>SSH Key bisa dibuat dengan cara menggunakan key-generator.</div>
+<br>
+<div>Bagi pengguna Windows, anda bisa menggunakan aplikasi [PuTTYgen](https://www.ssh.com/ssh/putty/windows/) untuk membuatnya. Untuk pengguna [Linux](https://www.ssh.com/ssh/putty/linux/) dan [Mac](https://www.ssh.com/ssh/putty/mac/), juga bisa menggunakan PuTTyGen versi masing-masing tentunya.</div>
+<br>
+<div>PuTTYgen adalah tool key generator untuk membuat SSH Key dengan PuTTY. Fungsi utamanya untuk membuat pasangan _public key_ dan _private key_.</div>
+<br>
+<div>PuTTY membuat key dalam formatnya sendiri yang disebut file `.ppk`. Tetapi tool tersebut juga bisa mengubah key dari dan ke beberapa format tool SSH lainnya.</div>
+<br>
+<div>Ikuti langkah-langkah berikut ini untuk membuat SSH Key dengan PuTTYgen:</div>
+<br>
+<div>1. Download aplikasi PuTTY di [www.putty.org](http://www.putty.org/) kemudian instal pada laptop anda.</div>
+<div>2. Jalankan PuTTYgen yang telah terinstal bersama PuTTY tadi.</div>
+<div>3. Pilih `SSH-1 (RSA)` pada `Type of key to generate`.</div>
+<div>4. Pastikan `Number of bits in a generated key` terisi dengan angka 2048 atau 4096. Ini menentukan seberapa kuat keamanan kuncinya agar tidak mudah dibobol menggunakan metode brute force.</div>
+<div><img src="https://publii.id/media/posts/24/generate-key-gen.png" alt="generate-key-gen" width="479" height="471"></div>
+<br>
+<div>![generate-key-gen](/images/post/2017/11/generate-key-gen.png)</div>
+<div>5. Klik tombol `Generate` untuk membuat SSH Key.</div>
+<div>6. Gerakkan cursor mouse secara acak pada area kosong dibawah progress bar sampai prosesnya selesai.</div>
+<div><img src="https://publii.id/media/posts/24/moving-the-mouse.png" alt="moving-the-mouse" width="479" height="471"></div>
+<br>
+<div>![moving-the-mouse](/images/post/2017/11/moving-the-mouse.png)</div>
+<div>7. Sepasang _public key_ dan _private key_ berhasil dibuat.</div>
+<div>8. Ubah teks yang ada pada kolom `Key comment` (tidak wajib) sesuai identifikasi tujuan penggunaan anda.</div>
+<div><img src="https://publii.id/media/posts/24/rsa-key-nettren.png" alt="rsa-key-nettren" width="479" height="471"></div>
+<br>
+<div>![rsa-key-nettren](/images/post/2017/11/rsa-key-nettren.png)</div>
+<div>9. Pada kolom `Key passphrase`, isikan teks yang berfungsi sebagai password setiap kali akan digunakan (sebenarnya tidak wajib, tapi agar lebih aman sebaiknya gunakanlah password).</div>
+<div><img src="https://publii.id/media/posts/24/key-phassphrase-2.png" alt="key-phassphrase-2" width="479" height="471"></div>
+<br>
+<div>![key-phassphrase-2](/images/post/2017/11/key-phassphrase-2.png)</div>
+<div>10. Klik `Save public key`,</div>
+<div><img src="https://publii.id/media/posts/24/public-key.png" alt="public-key" width="479" height="471"></div>
+<br>
+<div>![public-key](/images/post/2017/11/public-key.png)</div>
+<div>atau salin public key yang telah dibuat ke kolom `Add SSH Key` saat [proses pembuatan droplets](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div>
+<div><img src="https://publii.id/media/posts/24/add-rsa-key-droplets.png" alt="add-rsa-key-droplets" width="620" height="517"></div>
+<div> </div>
+<div>![add-rsa-key-droplets](/images/post/2017/11/add-rsa-key-droplets.png)</div>
+<div> </div>
+<div>11. Klik `Save private key` dan beri nama sesukamu dengan ekstensi `.ppk`, jangan sampai hilang atau diambil orang lain. Karena `private key` tersebut digunakan pada komputer kita untuk login ke server. Dan jika file tersebut sampai hilang, maka anda tidak akan bisa lagi masuk ke server anda.</div>
+<div><img src="https://publii.id/media/posts/24/my-private-key.png" alt="my-private-key" width="669" height="473"></div>
+<br>
+<div>![my-private-key](/images/post/2017/11/my-private-key.png)</div>
+<br>
+<div>Oya, perlu anda ketahui sebelumnya, proses pembuatan SSH Key diatas itu dilakukan sebelum anda membuat droplets pada Digital Ocean, jadi _public key_ tersebut ditambahkan ke server saat [proses pembuatan droplets](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div>
+<br>
+<div>Atau anda juga bisa menambahkan SSH Key terlebih dahulu pada menu akun Digital Ocean dengan cara masuk ke menu `Setting &gt; Security &gt; Add SSH Key`. Setelah itu baru [membuat dropletnya](https://nettren.com/cara-membuat-droplets-digital-ocean/).</div>
+<div><img src="https://publii.id/media/posts/24/add-ssh-key-setting.png" alt="add-ssh-key-setting" width="1101" height="424"></div>
+<br>
+<div>![add-ssh-key-setting](/images/post/2017/11/add-ssh-key-setting.png)</div>
+<br>
+<div>## Cara Memasang SSH Key pada Server</div>
+<div>Bagi anda yang sudah terlanjur membuat droplets duluan sebelum memasang SSH Key, ikuti cara memasang _public key_ berikut ini.</div>
+<br>
+<div>1. Login seperti biasa lewat SSH ke server. Atau bisa juga login menggunakan access console pada droplets.</div>
+<div><img src="https://publii.id/media/posts/24/launch-console.png" alt="launch-console" width="969" height="424"></div>
+<div> </div>
+<div>![launch-console](/images/post/2017/11/launch-console.png)</div>
+<div>2. Buatlah folder `.ssh` pada folder `home` user dengan cara:</div>
+<div>```bash</div>
+<div>mkdir -p ~/.ssh</div>
+<div>```</div>
+<div>atau lewati saja jika sudah ada folder tersebut.</div>
+<div>3. Sekarang buatlah atau modifikasi file `authorized_keys` dalam folder `.ssh`.</div>
+<div>```bash</div>
+<div>nano ~/.ssh/authorized_keys</div>
+<div>```</div>
+<div>Kemudian salin _public key_ yang berupa teks dalam kotak `Public key for pasting into authorized_keys file` yang anda buat di PuTTYgen pada langkah nomor 10 diatas, lalu tempelkan pada file authorized_keys.</div>
+<div><img src="https://publii.id/media/posts/24/authorized-key.png" alt="authorized-key" width="661" height="418"></div>
+<div> </div>
+<div>![authorized-key](/images/post/2017/11/authorized-key.png)</div>
+<div> </div>
+<div>Setelah itu simpan file tersebut dengan cara tekan tombol `ctrl+X &gt; ctrl+Y &gt; enter`</div>
+<br>
+<div>4. Aturlah hak akses folder dan file _authorized_keys_ tersebut (sangat penting).</div>
+<div>```bash</div>
+<div>chmod 0700 ~/.ssh</div>
+<div>chmod 0644 ~/.ssh/authorized_keys</div>
+<div>```</div>
+<br>
+<div>Jika anda mengikuti panduan diatas dengan benar, seharusnya anda sudah bisa login ke server dengan SSH tanpa password.</div>
+<br>
+<div>Gunakanlah aplikasi PuTTY untuk login ke server tersebut, silahkan baca dulu selengkapnya [Cara Menggunakan SSH Key dengan PuTTY pada Droplets Digital Ocean](https://nettren.com/cara-menggunakan-ssh-key-dengan-putty)</div>
+<br>
+<div>### Cara Mematikan Login SSH Menggunakan Username dan Password</div>
+<div>Setelah anda berhasil login ke server, proses selanjutnya yaitu mematikan login SSH menggunakan password.</div>
+<br>
+<div>Hal ini dilakukan untuk meningkatkan keamanan server agar tidak bisa diakses lagi menggunakan username dan password.</div>
+<br>
+<div>Tapi sebelum melakukannya, anda harus memastikan dulu login dengan SSH Key itu benar-benar bekerja dengan baik, karena jika login tersebut masih gagal, tapi anda sudah terlanjur mematikan passwordnya, maka anda tidak bisa lagi login ke server.</div>
+<br>
+<div>Untuk mematikan login password, anda perlu mengedit file konfigurasi SSH pada server. Pada sistem Ubuntu/Debian, file itu terletak pada `/etc/ssh/sshd_config`.</div>
+<div>```bash</div>
+<div>sudo nano /etc/ssh/sshd_config</div>
+<div>```</div>
+<div>Cari dan ubah pilihan seperti berikut</div>
+<div>```bash</div>
+<div>[...]</div>
+<div>PasswordAuthentication no</div>
+<div>[...]</div>
+<div>UsePAM no</div>
+<div>[...]</div>
+<div>```</div>
+<div>Untuk menyimpan tekan `ctrl + X &gt; ctrl + Y &gt; enter`. Kemudian `reload` konfigurasi SSH server</div>
+<div>```bash</div>
+<div>sudo reload ssh</div>
+<div>```</div>
+<br>
+<div>Nah, sekarang anda hanya bisa login ke server menggunakan SSH Key saja. Dan anda tidak perlu lagi khawatir server anda dibobol orang lain.</div>
+<br>
+<div>Tapi anda juga harus menyimpan _private key_ tersebut dengan aman, dan jangan lupa dibackup juga ke akun cloud anda, misalnya di [Dropbox](https://db.tt/P6738Fm8yS) atau Google Drive untuk berjaga-jaga kalau laptop anda rusak atau hilang dicuri orang, anda masih memiliki akses ke server.</div>
+<br>
+<div>Semoga informasi ini bermanfaat bagi anda.</div>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Cara Membuat Droplets Digital Ocean dengan Benar</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-membuat-droplets-digital-ocean-dengan-benar/"/>
+        <id>https://publii.id/cara-membuat-droplets-digital-ocean-dengan-benar/</id>
+
+        <updated>2018-12-25T10:16:17+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/23/droplet-digital-ocean.jpg" alt="membuat droplet digital ocean" />
+                    Digital Ocean merupakan salah satu penyedia layanan VPS (Virtual Private Server) yang paling populer dan terbaik di dunia. Saat ini sudah banyak blogger, internet&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/23/droplet-digital-ocean.jpg" alt="membuat droplet digital ocean" />
+                <div>Digital Ocean merupakan salah satu penyedia layanan <a href="../../../../../apa-itu-vps">VPS (Virtual Private Server)</a> yang paling populer dan terbaik di dunia.</div>
+<br>
+<div>Saat ini sudah banyak blogger, internet marketer, pemilik toko online, atau pebisnis online lainnya di Indonesia yang menggunakan VPS Digital Ocean sebagai server website mereka.</div>
+<br>
+<div>Alasan mereka menggunakan VPS Digital Ocean itu karena memang sudah teruji dan terjamin kualitasnya dibanding penyedia VPS lainnya.</div>
+<br>
+<div>Harga yang ditawarkannya pun juga relatif murah. Hanya dengan minimal biaya $5 dolar per bulan saja, anda sudah bisa berlangganan cloud server Digital Ocean.</div>
+<br>
+<div>Bahkan anda juga bisa mendapatkan `bonus $10 dolar` yang dapat digunakan untuk berlangganan VPS selama 2 bulan secara gratis. Untuk mendapatkan bonusnya itu silahkan daftar akun <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a>.</div>
+<br>
+<div>Setelah selesai daftar akun Digital Ocean, akun anda harus diverifikasi dulu dengan cara memasukkan data kartu kredit atau alamat email Paypal anda.</div>
+<br>
+<h2 id="mcetoc_1cvhlpf1b0">Cara Verifikasi Pembayaran Digital Ocean</h2>
+<div>Untuk melakukan verifikasi akun Digital Ocean, anda harus memasukkan data alat pembayaran yang akan anda gunakan untuk berlangganan VPS Digital Ocean.</div>
+<br>
+<div>Ada dua alat pembayaran yang bisa anda pilih, yaitu memasukkan data kartu kredit atau alamat Paypal anda.</div>
+<br>
+<div>Jika anda belum memiliki kartu kredit, gunakan saja Paypal seperti yang akan saya gunakan pada tutorial ini. Tapi kalau anda belum juga memiliki akun Paypal, silahkan buat dulu dengan mengikuti panduan <a href="../../../../../cara-membuat-akun-paypal">Cara Membuat Akun Paypal</a>.</div>
+<br>
+<div>Berikut ini langkah-langkah verifikasi akun Digital Ocean.</div>
+<ol>
+<li>Pastikan anda sudah mendaftar akun <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a></li>
+<li>Silahkan `Log in` ke akun Digital Ocean anda.<img src="https://publii.id/media/posts/23/02_login-digital-ocean.png" alt="login digital ocean" width="1344" height="626"></li>
+<li>Halaman `Billing Info` akan terbuka. Pilih `PayPal` pada menu tab, lalu isikan jumlah saldo yang akan anda top up ke Digital Ocean, misalnya US $5. Kemudian tekan tombol `PayPal`.<img src="https://publii.id/media/posts/23/04_billing-info-paypal.jpg" alt="billing info paypal" width="720" height="480"></li>
+<li>Anda akan diarahkan menuju halaman `Purchase details` PayPal. Silahkan isi deskripsi anda, lalu tekan tombol `Continue`.<img src="https://publii.id/media/posts/23/05_purchase-details.jpg" alt="purchase details" width="720" height="480"></li>
+<li>Halaman `PayPal Log In` terbuka, isikan alamat dan pasword PayPal anda, kemudian tekan tombol `Log In`.<img src="https://publii.id/media/posts/23/06_bayar-dengan-paypal.jpg" alt="bayar dengan paypal" width="720" height="480"></li>
+<li>Pada halaman deskripsi pembayaran Digital Ocean dengan PayPal, tekan tombol `Bayar Sekarang`.<img src="https://publii.id/media/posts/23/07_paypal-digital-ocean.jpg" alt="paypal digital ocean" width="720" height="480"></li>
+<li>Selamat, akun Digital Ocean anda sudah aktif. Dan bonus $10 dolar anda sudah bisa digunakan untuk mengaktifkan `droplets (istilah sebuah server pada Digital Ocean)` selama 2 bulan.<img src="https://publii.id/media/posts/23/08_droplets.jpg" alt="droplets" width="720" height="480"></li>
+</ol>
+<br>
+<h2 id="mcetoc_1cvhlpf1b1">Cara Menambahkan Nama Domain Pada VPS Digital Ocean</h2>
+<div>Setelah akun Digital Ocean aktif, anda bisa menambahkan nama domain yang akan digunakan pada droplets Digital Ocean anda.</div>
+<br>
+<div>Berikut ini langkah-langkahnya:</div>
+<div>- Pada halaman akun Digital Ocean anda, silahkan pilih `Networking` pada tab menu.</div>
+<div>- Pastikan tab menu `Domains` aktif, lalu masukkan nama domain anda pada kolom yang tersedia. Kemudian tekan tombol `Add Domain`.</div>
+<div><img src="https://publii.id/media/posts/23/09_add-domain.jpg" alt="add domain" width="720" height="480"></div>
+<div>- Setelah nama domain anda berhasil ditambahkan, halaman `DNS Records` akan muncul. Anda bisa melihat `Name Server` Digital Ocean disitu.</div>
+<div><img src="https://publii.id/media/posts/23/10_create-new-record.jpg" alt="create new record" width="720" height="480"></div>
+<div> </div>
+<div>- Silahkan pergi menuju halaman dimana anda telah membeli `nama domain` anda sebelumnya. Kemudian ubahlah `Name Servernya` dengan `Name Server Digital Ocean`.</div>
+<br>
+<div>## Cara Membuat Droplets Digital Ocean</div>
+<div>&gt; `Droplets` merupakan istilah untuk menyebut sebuah paket cloud server pada [Digital Ocean](https://m.do.co/c/29ffbe26bb28)</div>
+<br>
+<div>Jadi `droplets` itu sebenarnya nama lain VPS atau sebutan khusus untuk sebuah VPS yang kita gunakan pada Digital Ocean.</div>
+<br>
+<div>Dalam satu akun Digital Ocean, anda bisa memesan `droplets` sebanyak yang dibutuhkan, dan masing-masing droplets tersebut bisa diinstal sistem operasi yang berbeda sesuai kesukaan anda.</div>
+<br>
+<div>Namun sebenarnya untuk sebuah `droplets` saja sudah bisa digunakan untuk memasang puluhan CMS website yang sama maupun CMS yang berbeda. Misalnya WordPress, Ghost, Jekyll, OpenCart, dan lainnya dalam satu droplets.</div>
+<br>
+<div>Untuk membuat droplets Digital Ocean, ikuti langkah-langkahnya berikut ini:</div>
+<br>
+<div>1. Silahkan `Log In` ke akun Digital Ocean anda.</div>
+<div>2. Pada halaman akun Digital Ocean, pastikan kedua tab menu `Droplets` aktif, kemudian tekan tombol `Create Droplet`.</div>
+<div><img src="https://publii.id/media/posts/23/11_create-droplet.jpg" alt="create droplet" width="720" height="400"></div>
+<div> </div>
+<div>3. Halaman `Create Droplets` terbuka, disitu ada dua pilihan `Choose an image` yang tersedia, yaitu `Distributions` dan `One-click Apps`.</div>
+<div>- Pilih tab menu `Distributions` jika anda ingin menginstal sistem operasi yang masih kosong, anda bebas memilih sistem operasi yang telah disediakan (pada tutorial ini saya menggunakan OS Ubuntu 16.04.3 x64 karena merupakan versi LTS).</div>
+<div><img src="https://publii.id/media/posts/23/12_choose-an-image.jpg" alt="choose-an-image" width="720" height="320"></div>
+<div>- Pilih tab menu `One-click Apps` jika anda tidak mau ribet menginstal satu per satu komponen yang diperlukan CMS yang akan anda gunakan.</div>
+<div><img src="https://publii.id/media/posts/23/13_one-click-apps.jpg" alt="one-click-apps" width="720" height="400"></div>
+<div> </div>
+<div> </div>
+<div>Ini sangat cocok bagi anda yang ingin menggunakan salah satu CMS saja pada droplets. Silahkan pilih aplikasi yang akan anda gunakan, misalnya WordPress atau Ghost</div>
+<br>
+<div>4. Selanjutnya pada pilihan `Choose a size` silahkan pilih ukuran droplets yang sesuai dengan keperluan website anda.</div>
+<div><img src="https://publii.id/media/posts/23/14_choose-a-size.jpg" alt="choose-a-size" width="720" height="400"></div>
+<div> </div>
+<br>
+<div>jika masih pemula silahkan pilih saja $5 per bulan, nanti anda akan mendapatkan kapasitas 512 MB RAM dan memori penyimpanan SSD sebesar 20 GB ( jauh lebih besar dibanding _shared hosting_ biasa dengan harga yang sama).</div>
+<div>5. Proses selanjutnya, pada pilihan `Choose a datacenter region` silahkan pilih sesuai dengan tujuan target pasar anda. Kalau target pasar anda Indonesia, pilih saja `Singapore`.</div>
+<div><img src="https://publii.id/media/posts/23/15_choose-a-datacenter.jpg" alt="choose-a-datacenter" width="720" height="300"></div>
+<div>6. Pada pilihan `Select additional option`, kasih centang `Private networking` dan `IPV6`.</div>
+<div><img src="https://publii.id/media/posts/23/16_select-additional-options.jpg" alt="select-additional-options" width="720" height="160"></div>
+<div>7. Pada pilihan `Add your SSH key` silahkan tekan tombol `New SSH Key`. Untuk membuat `SSH key`, ikuti dulu panduan <a href="../../../../../cara-membuat-ssh-key">Cara Membuat SSH Key</a>.</div>
+<div><img src="https://publii.id/media/posts/23/17_new-ssh-key.jpg" alt="new-ssh-key" width="720" height="350"></div>
+<div> </div>
+<div> </div>
+<div>Pada kolom New SSH key, silahkan masukkan SSH key yang telah anda buat menggunakan `PuttyGen` tadi. Kemudian tekan tombol `Add SSH key`.</div>
+<div><img src="https://publii.id/media/posts/23/18_add-ssh-key.jpg" alt="add-ssh-key" width="720" height="480"></div>
+<div> </div>
+<div>8. Proses yang paling akhir, pada pilihan `Finalize and create` ada kolom nama hostname yang bisa anda ubah sesukamu, tapi jika tidak mau mengubahnya biarkan saja sesuai nama default.</div>
+<div> </div>
+<div>Itu fungsinya nanti sebagai nama identitas droplets anda. Selanjutnya silahkan tekan tombol `Create`.</div>
+<div><img src="https://publii.id/media/posts/23/19_create-droplet.jpg" alt="create-droplet" width="720" height="300"></div>
+<div> </div>
+<div>9. Selamat, droplets anda sudah siap untuk digunakan.</div>
+<br>
+<div>Tapi ingat, meski droplets anda sudah bisa digunakan, itu masih berupa sistem operasi Ubuntu yang kosong. Anda harus menginstal komponen satu per satu yang diperlukan untuk menjalankan website anda.</div>
+<br>
+<div>Silahkan ikuti selengkapnya [Panduan Cara Menggunakan VPS Digital Ocean.](https://nettren.com/cara-menggunakan-vps)</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Apa itu VPS? Benarkah VPS Bisa Meningkatkan Kinerja Website Anda?</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/apa-itu-vps-benarkah-vps-bisa-meningkatkan-kinerja-website-anda/"/>
+        <id>https://publii.id/apa-itu-vps-benarkah-vps-bisa-meningkatkan-kinerja-website-anda/</id>
+
+        <updated>2018-12-25T10:16:53+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/22/apa-itu-vps.jpg" alt="apa itu vps" />
+                    Setiap pemilik website pasti selalu menginginkan websitenya itu memiliki kinerja dan performa yang maksimal bukan? Coba bayangkan saja seandainya anda sebagai blogger atau pemilik&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/22/apa-itu-vps.jpg" alt="apa itu vps" />
+                <div>Setiap pemilik website pasti selalu menginginkan websitenya itu memiliki kinerja dan performa yang maksimal bukan?</div>
+<br>
+<div>Coba bayangkan saja seandainya anda sebagai blogger atau pemilik toko online, namun blog atau website anda tersebut sering mengalami gangguan teknis misalnya website sulit diakses, sering down, atau berjalan sangat lambat, pasti anda merasa kesal banget kan?</div>
+<br>
+<div>Gangguan yang sering dialami website anda itu, tidak hanya menyita waktu dan tenaga saja untuk memperbaikinya, namun yang paling ditakutkan itu bisa membuat pengunjung website anda bosan dan meninggalkannya begitu saja.</div>
+<br>
+<div>Perlu anda ketahui, sebenarnya masalah tersebut belum tentu disebabkan oleh CMS atau script websitenya yang mengalami error, namun bisa saja karena anda salah memilih web hosting sebagai server website anda.</div>
+<br>
+<div>Agar anda tidak salah memilih web hosting, sebaiknya ketahui dulu <a href="../../../../../perbedaan-shared-hosting-dan-vps">Perbedaan Shared Hosting, Cloud Hosting, dan VPS?</a></div>
+<br>
+<div>Saat pertama kali membangun website, anda bisa saja menggunakan shared hosting sebagai web server, karena anda tidak akan bisa merasakan perbedaannya dengan jenis web hosting yang lain.</div>
+<br>
+<div>Anda baru bisa merasakan perbedaannya setelah website atau blog yang telah anda bangun itu, sudah berkembang pesat dengan jumlah pengunjung yang semakin padat, website anda akan terasa berat dan semakin melambat untuk diakses.</div>
+<br>
+<div>Saat itulah anda harus beralih menggunakan VPS untuk menampung website anda. Anda bisa menggunakan layanan VPS yang paling terkenal saat ini, yaitu Digital Ocean. Silakan ikuti panduan <a href="../../../../../cara-menggunakan-vps">Cara Menggunakan VPS Digital Ocean Secara Lengkap</a>.</div>
+<br>
+<h2 id="mcetoc_1cvhlqhl30">Apa itu VPS</h2>
+<div>VPS (Virtual Private Server) merupakan salah satu jenis web hosting yang saat ini sudah semakin populer penggunaannya menggantikan shared Hosting konvensional.</div>
+<br>
+<div>VPS adalah sebuah server yang dibagi berdasarkan Virtual Machines (VM) atau komputer virtual, dimana setiap VM itu dijadikan `Virtual Server` yang bisa dipasang Operating System (OS) sendiri, menjalankan sebuah software, atau menyimpan data.</div>
+<br>
+<div>Jika anda sudah pernah menjalankan aplikasi VirtualBox atau VMware pada komputer pribadi, maka cara kerja VPS itu mirip seperti aplikasi tersebut.</div>
+<br>
+<div>Hanya saja kalau VPS itu memiliki mesin dengan spesifikasi hardware yang tinggi dan menerima akses internet 24 jam non stop sehingga bisa diakses dari seluruh penjuru dunia tanpa putus.</div>
+<br>
+<div>Saat ini, VPS banyak digunakan sebagai web server, cloud computing, software bot, dan menjalankan software robot untuk trading Forex. Agar bisa menggunakan VPS kita harus membayar biaya langganan setiap bulan kepada pihak penyedia jasa VPS.</div>
+<br>
+<div>Jika berlangganan VPS, maka kita bisa memilih spesifikasi yang akan digunakan berdasarkan RAM, ukuran SSD (hardisk penyimpanan), dan virtual prosesor. Sehingga kita akan mendapatkan resourse yang pasti tanpa takut terganggu jika ada masalah pada website lain dalam server tersebut.</div>
+<br>
+<div>Jadi VPS itu mirip sekali dengan dedicated server, namun kalau VPS itu lebih fleksibel karena anda hanya perlu membayar resource yang dibutuhkan saja. Jika nanti kebutuhan resource anda sudah meningkat, maka anda bisa upgrade dengan mudah sesuai kebutuhan anda.</div>
+<br>
+<h2 id="mcetoc_1cvhlqhl31">Mengapa Kita harus Menggunakan VPS?</h2>
+<div>Ada beberapa alasan kenapa kita harus menggunakan VPS dibanding menggunakan _shared hosting_ biasa. Dengan menggunakan VPS maka kinerja website anda akan berjalan lebih stabil dan ringan diakses meski pengunjung website anda mulai meningkat.</div>
+<br>
+<div>Kelebihan lainnya jika anda menggunakan VPS yaitu:</div>
+<br>+ ### Keamanan Terjamin<br>Dengan menggunakan VPS maka server anda akan memiliki keamanan yang terjamin karena hanya anda saja yang memiliki akses didalamnya, pihak penyedia VPS akan memberikan password khusus atau bisa juga menggunakan SSH Key untuk memastikan orang lain tidak bisa mendapat akses ke server anda.<br><br>+ ### Bebas Memilih Spesifikasi atau Resource Sesuai Kebutuhan<br>Dengan berlangganan VPS, anda bebas memilih resource yang ditawarkan berdasarkan RAM, kapasitas penyimpanan (SSD), dan prosesor yang digunakan. Hal ini tentunya sangat menguntungkan karena anda hanya perlu membayar sesuai kebutuhan website yang anda gunakan saja.<br>+ ### Aktif 24 Jam non Stop Setiap Hari<br>Anda tidak perlu repot membuat server website menggunakan komputer sendiri dengan menyalakan dan membiarkannya selalu online tanpa henti. Karena hal itu akan membuat komputer anda cepat rusak.<br>Anda hanya perlu menyewa VPS saja untuk digunakan dalam durasi waktu yang lama, misalnya seperti memantau trading Forex.<br> <br><br> <br><br>## Apa Saja Kegunaan VPS itu?<br>VPS tidak hanya digunakan untuk keperluan web server saja loh, namun VPS juga bisa digunakan untuk berbagai keperluan seperti berikut ini.<br>+ ### Hosting<br>VPS kebanyakan digunakan sebagai hosting website, karena kemampuannya yang bisa dikonfigurasi sesuai keperluan kita. Saat ini sudah banyak platform CMS website yang menggunakan teknologi terbaru seperti NodeJS atau Ruby dimana hosting biasa belum mendukungnya. Nah, VPS itu sangat cocok digunakan untuk menjalankan Platform tersebut.<br>+ ### Tunneling<br>Tunneling ini sebenarnya hanyalah sebuah jalur untuk mengelola VPS, khususnya VPS yang menggunakan OS Linux, tetapi dengan adanya fitur port forwarding, tunneling ini bisa digunakan untuk mengakses internet menggunakan koneksi VPS milik kita<br>+ ### Leech Torrent<br>VPS juga bisa digunakan sebagai leecher file – file yang ada di torrent karena rata – rata kecepatan koneksi VPS bisa mencapai puluhan MB per detiknya sehingga memudahkan kita mengambil atau mendownload file – file yang ada di torrent.<br>+ ### Membuat VPN<br>VPN dibuat melalui VPS. VPN (Virtual Private Network) hampir sama dengan tunneling. Tetapi jalur enkripsi dan metode-nya saja yang berbeda, sehingga VPN lebih mudah diaplikasikan. Hanya saja proses instalasinya lebih rumit.<br>+ ### Membuat Proxy<br>Proxy juga bisa dibuat dari VPS. Tetapi tidak banyak yang menggunakan VPS untuk proxy karena tunneling dan VPN jauh lebih mudah digunakan. Proxy kegunaanya hampir sama dengan VPN dan Tunneling, masking IP menggunakan server VPS kita<br>+ ### Memantau Forex<br>Trading Forex sedang menjadi primadona banyak investor untuk melipat gandakan uang. Namun kelemahan trading Forex adalah kita harus selalu memantau kinerja software trading kita, sehingga harus realtime terus.<br><br>
+<h2 id="mcetoc_1cvhlqhl32">Dimana Harus Berlangganan VPS yang Terbaik?</h2>
+<div>Saat ini penyedia VPS sudah sangat banyak baik lokal maupun luar negeri, hal ini tentunya juga akan membingungkan anda kan? bingung harus memilih layanan VPS yang benar-benar memiliki performa terbaik dengan harga yang relatif terjangkau.</div>
+<br>
+<div>Kalau menurut saya, sebenarnya sangat mudah sih menentukan penyedia VPS yang terbaik saat ini. Jika penyedia VPS itu memiliki komunitas dan pengguna terbanyak, berarti itulah VPS yang paling populer dan terbaik. Dan jawabnya itu adalah VPS Digital Ocean.</div>
+<br>
+<div>Anda bisa menemukan testimoni dan tutorial tentang VPS Digital Ocean dengan mudah, dan itu akan sangat membantu jika anda memiliki masalah saat melakukan konfigurasi website pada VPS Digital Ocean tersebut.</div>
+<br>
+<div>Jika anda ingin berlangganan VPS Digital Ocean, silahkan ikuti dulu panduan Cara Menggunakan VPS Digital Ocean dengan Lengkap. Dan pastikan anda mendapatkan bonus saldo `$10 dolar` jika anda mendaftar akun <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a> melalui link tersebut.</div>
+<br>
+<div>Lumayan loh saldo $10 dolar itu bisa anda gunakan untuk berlangganan VPS selama 2 bulan secara gratis.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Apa Perbedaan Shared Hosting, Cloud Hosting, dan VPS?</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/apa-perbedaan-shared-hosting-cloud-hosting-dan-vps/"/>
+        <id>https://publii.id/apa-perbedaan-shared-hosting-cloud-hosting-dan-vps/</id>
+
+        <updated>2018-12-25T10:17:13+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/21/share-hosting.jpg" alt="perbedaan share hosting dan vps" />
+                    Jika anda serius menekuni bisnis online, pasti memerlukan website untuk kelancaran bisnis anda. Website itu bisa berupa blog, toko online, landing page, atau website&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/21/share-hosting.jpg" alt="perbedaan share hosting dan vps" />
+                <div>
+<div>Jika anda serius menekuni bisnis online, pasti memerlukan website untuk kelancaran bisnis anda. Website itu bisa berupa blog, toko online, landing page, atau website profil usaha anda.</div>
+<br>
+<div>Untuk menjalankan website tersebut dibutuhkan server web hosting. Web hosting itu sendiri ada beberapa macam jenisnya seperti <em>shared hosting, cloud hosting, VPS, dedicated server</em> dan istilah-istilah serupa lainnya.</div>
+<br>
+<div>Yang menjadi masalah yaitu jika anda masih pemula dalam bisnis online, pasti akan bingung memilih server mana yang dibutuhkan untuk menampung website anda.</div>
+<br>
+<div>Namun sebelum mencari tahu perbedaannya masing-masing, alangkah baiknya jika anda pahami lebih dulu apa itu web server.</div>
+<br>
+<div>Pengertian umumnya, web server itu merupakan PC yang aktif dan mendapatkan akses internet selama 24 jam non stop setiap harinya. PC yang digunakan juga sama seperti yang kita kenal selama ini.</div>
+<br>
+<div>Jadi server juga menggunakan hardware seperti RAM, Disk Drive (Hardisk atau SSD), dan prosesor. Yang membedakan hanyalah daya tahan dan spesifikasi hardware yang dimilikinya lebih tinggi daripada PC biasa.</div>
+<br>
+<div>Server tersebut ditempatkan pada sebuah rak khusus yang berada di dalam sebuah data center yang memiliki sistem pendinginan, kelistrikan dan koneksi internet sehingga website di dalam server tersebut bisa diakses dari seluruh dunia.</div>
+<br>
+<div>Biaya untuk sebuah unit dan perawatan server itu sangat mahal bagi orang awam.</div>
+<br>
+<div>Agar server ini lebih mudah disewakan kepada <em>client</em> atau pelanggan dengan harga yang murah, maka pengelola server itu membagi server tersebut menjadi beberapa bagian, sehingga sebuah server bisa digunakan oleh banyak orang sekaligus.</div>
+<br>
+<div>Istilah pembagian server itulah yang disebut dengan shared hosting, cloud hosting, dan VPS seperti yang dikenal saat ini.</div>
+<br>
+<div>Dan jika client atau pelanggan menginginkan server yang utuh untuk digunakan sendirian tanpa pembagian resource dengan orang lain, server itu disebut dengan <em>Dedicated Server</em>.</div>
+<br>
+<div>Dedicated server itu biasanya digunakan untuk menampung website yang memiliki trafik super padat. Dan tentu saja biaya sewa yang harus dikeluarkan oleh pelanggannya itu juga sangat mahal. Seperti halnya menyewa rumah untuk dihuni sendirian pun juga memerlukan biaya yang tinggi.</div>
+<br>
+<div>Meskipun pada dasarnya shared hosting, cloud hosting, dan VPS itu sama-sama merupakan sebuah server yang telah dibagi-bagi sesuai spesifikasi dan harga yang ditentukan oleh pengelola server, tetap saja ada perbedaan teknologi serta kelebihan dan kekurangannya masing-masing.</div>
+<br>
+<div>Apa saja perbedaannya itu? silahkan baca selengkapnya ulasan berikut ini.</div>
+<br>
+<h2 id="mcetoc_1cvhlr5es0">Shared Hosting</h2>
+<div>Shared hosting merupakan salah satu jenis web hosting yang menggunakan sebuah mesin server kemudian dibagikan kepada banyak pengguna sekaligus, tanpa adanya pembagian resource khusus seperti RAM dan Prosesor untuk setiap clien-nya.</div>
+<br>
+<div>Hal tersebut mengakibatkan semua client yang berada di shared hosting itu menerima resource yang tidak beraturan, rentan down dan terkena suspend.</div>
+<br>
+<div>Semua website pelanggan berjalan pada sistem operasi dan kontrol panel yang sama. Sebuah server bisa dipakai bersama-sama oleh ratusan hingga ribuan website.</div>
+<br>
+<div>Jika pada shared hosting ada client atau pelanggan yang melanggar kebijakan penggunaan, maka pihak penyedia hosting tersebut tidak akan segan-segan untuk menjatuhkan suspend.</div>
+<br>
+<div>Suspend ini akan dikenakan bagi pelanggan yang dianggap memberatkan kinerja server, misalnya menghabiskan banyak bandwidth atau memiliki trafik yang padat.</div>
+<br>
+<div>Shared hosting juga dikenal tidak stabil karena sering mengakibatkan website down atau lambat diakses jika jumlah pengguna yang berada pada suatu server terlalu banyak.</div>
+<br>
+<div>Namun ada kelebihan yang bisa didapat dari shared hosting ini, yaitu harganya yang relatif murah.</div>
+<br>
+<div>Fitur-fitur yang disediakan juga cukup lengkap untuk memudahkan pengguna dalam mengelola hosting.</div>
+<br>
+<div>Fitur tersebut yaitu cPanel, file explorer untuk download/upload file dan script auto-installer, seperti Softaculous yang bisa digunakan untuk menginstal CMS pilihan anda secara instan.</div>
+<br>
+<h2 id="mcetoc_1cvhlr5es1">Cloud Hosting</h2>
+<div>Cloud hosting merupakan web hosting yang menggunakan serangkaian server-server yang saling berhubungan satu sama lain dan berfungsi sebagai satu kesatuan.</div>
+<br>
+<div>Jadi tidak hanya bergantung pada satu mesin server saja. Sehingga jika salah satu mesin server rusak, mesin server lainnya akan segera mengambil alih dengan jeda waktu yang singkat saja sehingga masa kegagalan server (server downtime) menjadi sangat minim.</div>
+<br>
+<div>Saat pertama kali akan berlangganan cloud hosting, pelanggannya itu harus memilih resource seperti RAM dan Prosesor yang ingin digunakan untuk hosting website miliknya.</div>
+<br>
+<div>Sehingga website anda akan mendapat alokasi sumberdaya yang dikhususkan (CPU, RAM, dan kapasitas disk) yang tidak dibagi dengan pengguna lain.</div>
+<br>
+<div>Dengan adanya pembagian resource ini, jika sewaktu-waktu website anda mengalami perubahan jumlah trafik pengunjung, anda bisa menaikkan atau menurunkan resource server anda seperti jumlah Core CPU, maupun jumlah RAM sesuai kebutuhan website anda.</div>
+<br>
+<div>Dalam server cloud hosting jika ada salah satu pengguna melebihi batas penggunaan sumberdaya yang sudah dialokasikan untuknya, maka hanya website sang pengguna bersangkutan sajalah yang akan mengalami penurunan performa.</div>
+<br>
+<div>Pengguna maupun website yang lainnya dalam server tersebut tidak akan terpengaruh sama sekali. Sehingga penggunaan sumberdaya diantara para pengguna di sistem cloud akan menjadi adil dan dibatasi antara satu dengan yang lainnya.</div>
+<br>
+<div>Biasanya penyedia layanan cloud hosting ini juga telah menyediakan fitur yang hampir sama dengan shared hosting untuk memudahkan pelanggannya. Di server tersebut telah disediakan cPanel, file explorer untuk download/upload file, maupun script auto-installer semacam Softaculous untuk memudahkan instal CMS kesayangan anda.</div>
+<br>
+<div>Server cloud hosting ini sangat saya sarankan bagi pengguna pemula maupun pemilik website atau blog dengan trafik yang cukup tinggi.</div>
+<br>
+<div>Jika anda ingin menggunakan layanan cloud hosting lokal, saya rekomendasikan untuk menggunakan hosting di <a href="https://client.dewaweb.com/aff.php?aff=2583">Dewaweb</a>.</div>
+<br>
+<div>Kenapa harus memilih Dewaweb? Karena Dewaweb itu merupakan penyedia cloud hosting pertama di Indonesia. Harga yang ditawarkannya juga relatif terjangkau bagi pemula sekalipun.</div>
+<br>
+<div>Untuk masalah teknisi supportnya juga tidak usah diragukan lagi, karena mereka secepatnya akan membantu menyelesaikan keluhan-keluhan anda kalau terjadi masalah pada server yang mengganggu kinerja website anda.</div>
+<br>
+<h2 id="mcetoc_1cvhlr5es2">VPS</h2>
+<div>VPS merupakan sebuah web server yang dibagi menjadi beberapa VM (Virtual Machine), dimana setiap VM tersebut digunakan sebagai "Virtual Server" yang dapat di instal system operasi sendiri seperti layaknya dedicated server.</div>
+<br>
+<blockquote>
+<div>Sederhananya, VPS itu bisa diibaratkan seperti PC virtual kosong dengan resource yang telah ditentukan sebelumnya, kemudian harus diinstal sistem operasi sendiri agar bisa digunakan sebagai web server.</div>
+</blockquote>
+<br>
+<div>Kelebihan VPS dibanding dengan shared hosting yaitu, anda akan mendapatkan resource yang pasti, baik CPU, memory, maupun spacenya. Sehingga tidah akan terganggu jika ada masalah pada website lain pada server tersebut.</div>
+<br>
+<div>Anda juga akan mendapat akses root sehingga lebih leluasa dalam mengelola server sesuai dengan kebutuhan anda. Jika dibandingkan dengan Dedikated server, VPS itu lebih fleksibel karena anda hanya perlu membayar resource yang dibutuhkan saja, dan kalau kebutuhannya nanti meningkat bisa di upgrade tahap demi tahap.</div>
+<br>
+<div>Jika anda masih belum paham dengan VPS, silakan baca selengkapnya <a href="apa-itu-vps">Apa itu VPS? dan Kapan harus Beralih menggunakan VPS</a>.</div>
+<br>
+<h2 id="mcetoc_1cvhlr5es3">Bagusnya Berlangganan Yang Mana?</h2>
+<div>Nah setelah membaca penjelasan diatas, sudah tahu kan perbedaannya masing-masing?</div>
+<br>
+<div>Jika anda masih bingung harus menggunakan yang mana, saran saya gunakanlah sesuai kebutuhan dan biaya yang anda sediakan.</div>
+<br>
+<div>Misalkan jika anda masih belajar bikin blog atau website yang belum memiliki pengunjung yang banyak, gunakanlah cloud hosting. Dengan biaya minimum Rp 180.000 per tahun saja anda sudah bisa mendapatkan cloud hosting dan domain gratis di <a href="https://client.dewaweb.com/aff.php?aff=2583">Dewaweb</a>.</div>
+<br>
+<div>Jika blog atau website anda sudah mulai berkembang pesat pengunjungnya, dan website anda sudah mulai terasa berat untuk diakses, silahkan beralih menggunakan layanan VPS.</div>
+<br>
+<div>Gunakanlah layanan VPS <a href="https://m.do.co/c/29ffbe26bb28">Digital Ocean</a> jika anda ingin mendapatkan performa yang tinggi dengan harga yang relatif murah. Digital Ocean juga merupakan salah satu layanan VPS terbaik di dunia saat ini.</div>
+<br>
+<div>Silahkan baca selengkapnya <a href="cara-menggunakan-vps-digital-ocean">Cara Menggunakan VPS Digital Ocean</a>.</div>
+<br>
+<div>Demikianlah penjelasan mengenai jenis-jenis web hosting yang harus anda ketahui. Semoga informasi ini bermanfaat bagi anda.</div>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>7 Daftar Kartu Debit Bank Lokal untuk Verifikasi dan Transaksi Paypal</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/7-daftar-kartu-debit-bank-lokal-untuk-verifikasi-dan-transaksi-paypal/"/>
+        <id>https://publii.id/7-daftar-kartu-debit-bank-lokal-untuk-verifikasi-dan-transaksi-paypal/</id>
+
+        <updated>2018-12-25T10:17:35+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/20/debit-card.jpg" alt="kartu debit bank lokal" />
+                    Jika anda menjalankan salah satu bisnis online, baik sebagai blogger, penulis artikel, freelancer, internet marketer, jualan item digital di marketplace luar negeri, pasti anda&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/20/debit-card.jpg" alt="kartu debit bank lokal" />
+                <div>
+<div>Jika anda menjalankan salah satu bisnis online, baik sebagai blogger, penulis artikel, freelancer, internet marketer, jualan item digital di marketplace luar negeri, pasti anda sudah mengenal apa itu Paypal.</div>
+<br>
+<div>Tapi jika anda masih pemula dan belum mengetahuinya, silakan baca dulu <a href="../../../../../cara-membuat-akun-paypal">Apa itu Paypal?</a></div>
+<br>
+<div>Salah satu kendala yang banyak dialami oleh para pebisnis online pemula yaitu kesulitan melakukan verifikasi akun Paypal mereka.</div>
+<br>
+<div>Karena syarat utama untuk bisa verifikasi akun Paypal itu harus memiliki kartu kredit, sedangkan untuk mendapatkan kartu kredit itu diperlukan syarat-syarat yang tidak mudah dipenuhi oleh setiap orang, khususnya bagi pelaku bisnis online pemula.</div>
+<br>
+<div>Beruntungnya, saat ini sudah mulai muncul beberapa bank lokal di Indonesia yang mengeluarkan kartu debit berlogo Visa atau Mastercard yang bisa digunakan untuk verifikasi akun Paypal.</div>
+<br>
+<div>Tapi perlu anda ketahui ya, tidak semua kartu debit keluaran bank-bank besar di Indonesia saat ini bisa diterima oleh Paypal, meski sudah berlogo Visa atau Mastercard.</div>
+<br>
+<div>Misalnya saja kartu debit Visa keluaran bank Mandiri, sampai saat artikel ini ditulis hanya mendukung transaksi online yang menggunakan fitur 3dsecure/VBV. Sehingga tidak bisa digunakan untuk `verifikasi` dan transaksi Paypal, karena Paypal tidak menggunakan fitur 3dsecure.</div>
+<br>
+<div>Jika anda pernah membaca artikel-artikel diluar sana yang mengatakan kalau bisa verifikasi akun Paypal dengan menggunakan VCC dan VCN, sejak akhir tahun 2016 lalu pihak Paypal sudah mengubah kebijakannya.</div>
+<br>
+<div>Paypal saat ini hanya menerima kartu kredit dan debit fisik keluaran bank lokal untuk verifikasi serta tidak menerima (bukan tidak bisa) segala jenis kartu virtual/ non fisik termasuk VCC (Virtual Credit Card) dan VCN (Virtual Card Number) seperti VCN BNI dan Octopay CIMB Niaga yang sifat datanya anonim dan tidak bisa diuji kepemilikannya secara fisik.</div>
+<br>
+<h2 id="mcetoc_1cvhlrs3k0">Daftar Kartu Debit Lokal yang Mendukung Verifikasi dan Transaksi Paypal</h2>
+<br>
+<div>Seperti yang saya jelaskan sebelumnya bahwa tidak semua kartu debit berlogo Visa atau Mastercard itu bisa diterima oleh pihak Paypal. Saat ini hanya ada beberapa kartu debit fisik lokal di Indonesia yang bisa diterima secara legal untuk verifikasi dan transaksi PayPal.</div>
+<br>
+<div>Berikut ini daftar kartu debit yang disarankan dan sudah dikonfirmasi beberapa sumber terpercaya untuk verifikasi akun Paypal.</div>
+<br>
+<ol>
+<li><a href="https://www.permatabank.com/Retail/Kartu-Debit/PermataDebit-Online">Kartu Debit Visa Bank Permata</a></li>
+<li><a href="https://www.permatabank.com/Syariah/Pendanaan">Kartu Debit Visa Bank Permata Syariah</a></li>
+<li><a href="http://www.btn.co.id/id/content/BTN-Promo/BTN-Promo">Kartu Debit Visa BTN</a></li>
+<li><a href="http://www.btn.co.id/id/Syariah/Produk/Produk-Dana/Tabungan-Batara-iB">Kartu Debit Visa BTN Syariah</a></li>
+<li><a href="https://www.jenius.com">Kartu Debit Visa Jenius BTPN</a></li>
+<li><a href="https://www.dbs.com/digibank/id/id/index.html">Kartu Debit Visa Digibank Bank DBS</a></li>
+<li><a href="http://bankingpromo.anz.co.id/id/anz-promo/anz-atmdebit-card">Kartu Debit Visa Bank ANZ</a></li>
+</ol>
+<br>
+<div>Saat ini, di Indonesia sudah tidak bisa lagi menggunakan rekening tabungan bank lokal untuk verifikasi dan transaksi PayPal. Namun rekening bank lokal bisa digunakan untuk keperluan withdrawal (penarikan dana) hasil pembayaran yang menggunakan PayPal.</div>
+<br>
+<div>Kartu Kredit dan debit itupun saat ini hanya bisa digunakan di PayPal sebagai alat verifikasi dan sumber dana pembayaran langsung, dan tidak bisa digunakan untuk top-up saldo diakun PayPal sendiri.</div>
+<br>
+<div>Selain dari kartu kredit dan debit, hanya saldo legal hasil dari pembayaran barang atau jasa dan pengiriman dana pribadi (keluarga dan teman) saja yang bisa digunakan untuk belanja atau withdrawal.</div>
+<br>
+<div>Jadi jangan coba-coba untuk beli saldo PayPal lagi ya, karena jual beli saldo PayPal itu dianggap ilegal dan tidak sesuai dengan kebijakan PayPal.</div>
+</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Cara Verifikasi Akun Paypal Tanpa Kartu Kredit</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-verifikasi-akun-paypal-tanpa-kartu-kredit/"/>
+        <id>https://publii.id/cara-verifikasi-akun-paypal-tanpa-kartu-kredit/</id>
+
+        <updated>2018-12-25T10:17:56+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/19/verifikasi-akun-paypal.jpg" alt="verifikasi akun paypal" />
+                    Mungkin anda sebagian dari orang-orang yang sedang bingung mencari cara untuk verifikasi akun Paypal, karena anda belum memiliki kartu kredit sendiri sebagai syarat utama&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/19/verifikasi-akun-paypal.jpg" alt="verifikasi akun paypal" />
+                <div>Mungkin anda sebagian dari orang-orang yang sedang bingung mencari cara untuk verifikasi akun Paypal, karena anda belum memiliki kartu kredit sendiri sebagai syarat utama untuk verifikasi akun Paypal tersebut.</div>
+<br>
+<div>Kalau memang itu permasalahan anda saat ini, anda tidak sendirian kok, karena hal itu juga saya alami sendiri.</div>
+<br>
+<div>Seperti yang kita ketahui bersama ya, salah satu kekurangan dari seorang wiraswasta itu misalnya jadi blogger atau freelance, yaitu sulitnya mengajukan kartu kredit, karena memang ada syarat-syarat tertentu yang tidak bisa dipenuhi.</div>
+<br>
+<div>Kalau anda pernah mencari informasi cara verifikasi akun Paypal sebelumnya lewat Google, anda pasti akan menjumpai artikel-artikel baik di blog atau tread di kaskus yang menyarankan anda membeli VCC (Virtual Credit Card) untuk keperluan verifikasi akun Paypal.</div>
+<br>
+<div>Saya sendiri pun pertama kali verifikasi akun Paypal itu juga menggunakan VCC yang banyak dijual diluar sana, kemudian saya beralih menggunakan VCC Neteller untuk mengisi saldo di Paypal.</div>
+<br>
+<div>Namun sayangnya pada akhir tahun 2016 lalu, pihak Paypal mengubah kebijakannya sehingga tidak bisa lagi menggunakan VCC untuk keperluan verifikasi maupun mengisi saldo ke rekening Paypal.</div>
+<br>
+<div>Sejak saat itu saya mulai mencari tahu bank-bank di Indonesia yang sudah mengeluarkan kartu debit yang bisa diterima oleh Paypal. Karena sampai saat ini, kebanyakan bank besar di Indonesia itu belum mengeluarkan kartu debit ATM yang mendukung transaksi dengan Paypal.</div>
+<br>
+<div>Jika anda penasaran dengan bank-bank di Indonesia apa saja yang sudah mengeluarkan kartu debit ATM yang mendukung verifikasi Paypal, silakan baca selengkapnya <a href="../../../../../daftar-kartu-debit-indonesia-untuk-verifikasi-paypal">7 Daftar Kartu Debit Bank Lokal Indonesia untuk Verifikasi dan Transaksi Paypal</a>.</div>
+<br>
+<div>Anda bisa menggunakan salah satu kartu debit yang saya sebutkan dalam artikel tersebut untuk proses `verifikasi` akun Paypal.</div>
+<br>
+<div>Namun saya menyarankan anda untuk menggunakan kartu debit Jenius karena bisa didapatkan secara gratis dan proses pembuatannya juga sangat mudah, bahkan bisa dilakukan cuma lewat smartphone saja.</div>
+<br>
+<div>Pada tutorial ini, saya juga menggunakan kartu debit Jenius untuk proses verifikasi akun Paypal.</div>
+<br>
+<h2 id="mcetoc_1cvdkj5v20">Cara Verifikasi Akun Paypal dengan Kartu Debit Jenius</h2>
+<div>Sebelum anda bisa mengikuti panduan yang saya berikan, pastikan terlebih dahulu anda sudah memiliki kartu debit Jenius yang bisa didapatkan secara gratis. Silakan baca selengkapnya <a href="../../../../../cara-mendapatkan-kartu-debit-jenius-gratis">Cara Mendapatkan Kartu Debit Jenius Gratis</a>.</div>
+<br>
+<div>Dan pastikan juga anda telah mengikuti panduan <a href="cara-membuat-akun-paypal">Cara Membuat Akun Paypal</a>.</div>
+<br>
+<div>Selanjutnya silakan mengikuti langkah-langkah cara verifikasi akun Paypal dengan kartu debit Jenius:</div>
+<br>
+<ol>
+<li>Kunjungi alamat website <a href="https://www.paypal.com/id/home">Paypal Indonesia</a></li>
+<li>Silakan tekan tombol `Log in`.<img src="https://publii.id/media/posts/19/01_paypal-indonesia.jpg" alt="paypal indonesia" width="1080" height="607"></li>
+<li>Masukkan alamat email dan password sesuai dengan yang anda gunakan untuk mendaftar akun Paypal sebelumnya. Lalu tekan tombol `Log In`.<img src="https://publii.id/media/posts/19/01_login-paypal.jpg" alt="login paypal" width="1080" height="607"></li>
+<li>Anda diarahkan menuju halaman `myaccount` Paypal. Kemudian tekan tombol `Link a card`<img src="https://publii.id/media/posts/19/02_myaccount-paypal.jpg" alt="myaccount paypal" width="1080" height="607"></li>
+<li>Halaman baru `Link a card` terbuka. Pada menu dropdown `Card type` pilih `Visa`, Kemudian pada kolom yang tersedia silakan masukkan `nomor kartu`, `tanggal kadaluarsa`, dan kode `CSC` 3 digit yang terdapat pada kartu `m-Card` Jenius anda. Lalu tekan tombol `Save`.<img src="https://publii.id/media/posts/19/03_link-acard.jpg" alt="link a card" width="1080" height="607"></li>
+<li>Selamat, akun Paypal anda telah berhasil diverifikasi</li>
+</ol>
+<br>
+<div>Semoga artikel ini bisa membantu kesulitan anda selama ini dalam proses verifikasi akun Paypal. Silakan bagikan artikel ini keteman-teman anda, siapa tahu mereka juga bisa terbantu dengan informasi ini.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Cara Mudah Membuat Akun Paypal Tanpa Kartu Kredit</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-membuat-akun-paypal/"/>
+        <id>https://publii.id/cara-membuat-akun-paypal/</id>
+
+        <updated>2018-12-25T10:18:17+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/18/cara-daftar-paypal.jpg" alt="cara membuat akun paypal" />
+                    Apakah anda baru mengenal bisnis online? atau anda baru berencana untuk terjun dalam bisnis online? Jika anda memang memiliki rencana untuk ikut terjun dalam&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/18/cara-daftar-paypal.jpg" alt="cara membuat akun paypal" />
+                <div>Apakah anda baru mengenal bisnis online? atau anda baru berencana untuk terjun dalam bisnis online?</div>
+<br>
+<div>Jika anda memang memiliki rencana untuk ikut terjun dalam bisnis online, anda harus mengetahui lebih dulu alat-alat pembayaran yang diperlukan dalam transaksi bisnis online.</div>
+<br>
+<div>Di dalam bisnis online ada beberapa macam cara atau sistem pembayaran yang bisa digunakan, mulai dari transfer antar rekening bank sampai penggunaan uang virtual.</div>
+<br>
+<div>Untuk melakukan transaksi online dalam negeri, hal itu tidak menjadi kendala bagi sebagian besar orang, karena bisa dilakukan dengan mudah menggunakan transfer antar rekening bank.</div>
+<br>
+<div>Berbeda halnya jika anda akan melakukan transaksi dari luar negeri, misalnya untuk membeli layanan VPS Digital Ocean, belanja di Amazon, menerima pembayaran Google Adsense, atau menerima hasil penjualan item di Themeforest, anda tidak bisa lagi menggunakan transfer antar bank.</div>
+<br>
+<div>Solusinya anda harus menggunakan uang virtual dengan melibatkan pihak ketiga yaitu Secure Payment Gateway dan Credit Card Authorization Service, diantaranya Paypal, Neteller, Payoneer, dan lain-lain.</div>
+<br>
+<div>Diantara sekian banyak alat pembayaran tersebut, salah satu yang paling terkenal dan banyak digunakan yaitu Paypal. Hanya dengan menggunakan alamat email Paypal saja, anda bisa transfer uang dengan cepat dan aman antar negara.</div>
+<h2 id="mcetoc_1cvhlt4vf0">Apa itu Paypal?</h2>
+<div>Mungkin anda baru mengenal Paypal ya? dan anda juga belum tahu bagaimana cara menggunakan dan cara kerja Paypal?</div>
+<br>
+<div>Paypal merupakan salah satu dari sekian banyak alat pembayaran (Payment Processor) virtual. Pelaksananya adalah PayPal Inc. sebuah perusahaan dalam jaringan yang menyediakan jasa transfer uang melalui surat elektronik, menggantikan metode lama yang masih menggunakan kertas, seperti cek dan wesel pos.</div>
+<br>
+<div>Hingga saat ini, Paypal menjadi alat pembayaran virtual yang paling banyak digunakan oleh internet marketer karena memang alat pembayaran ini adalah yang paling aman.</div>
+<br>
+<div>Paypal itu ibaratnya sebagai rekening virtual yang bisa digunakan untuk transaksi ke seluruh pengguna internet di dunia dengan cepat. Tentunya bagi mereka yang juga memiliki akun Paypal.</div>
+<br>
+<div>Anda pun juga bisa membuat akun Paypal dengan mudah dan gratis. Tapi sebelumnya anda harus menyiapkan dulu alamat email yang akan digunakan dalam proses pendaftaran akun Paypal. Alamat email anda nanti fungsinya sebagai pengganti nomor rekening Paypal.</div>
+<br>
+<div>Jadi untuk mengirim ke rekening tujuan atau untuk menerima pembayaran lewat Paypal, anda hanya perlu mengetahui alamat email Paypalnya saja.</div>
+<br>
+<div>Anda bisa menggunakan Paypal untuk transaksi apapun lewat internet, misalnya untuk membeli ebook, membeli lisensi software original, membeli barang di e-Bay, membeli layanan web hosting, atau untuk keperluan donasi.</div>
+<br>
+<div>Yang harus anda perhatikan setelah membuat akun Paypal, akun Paypal anda itu perlu diverifikasi oleh pihak Paypal sebelum bisa digunakan untuk melakukan pembelian dan menerima pembayaran.</div>
+<br>
+<div>Agar akun Paypal tersebut mendapat status `"verified"`, anda harus memasukkan data kartu kredit anda ke dalam akun Paypal anda tersebut.</div>
+<br>
+<div>"Loh..., judul artikelnya kan <a href="../../../../../cara-membuat-akun-paypal">cara membuat akun Paypal tanpa kartu kredit</a>, kok prosesnya harus memasukkan data kartu kredit?"</div>
+<br>
+<div>Tenang dulu..., saya tahu kok anda belum tentu memiliki kartu kredit. Makanya silahkan baca selengkapnya <a href="../../../../../cara-verifikasi-akun-paypal">cara verifikasi akun Paypal tanpa kartu kredit</a>.</div>
+<h2 id="mcetoc_1cvhlt4vf1">Apa Keuntungan Menggunakan Paypal?</h2>
+<div>Ada banyak sekali manfaat yang bisa didapatkan dengan menggunakan Paypal. Selain kemudahan dalam proses pengiriman dan penerimaan uang yang sangat cepat dan aman, bagi pebisnis online yang menggunakan Paypal sebagai alat pembayarannya, bisa menghindari risiko penipuan oleh pihak yang tidak bertanggung jawab.</div>
+<br>
+<div>Bahkan Paypal melindungi kedua belah pihak antara pembeli dan penjual yang menggunakan layanannya.</div>
+<br>
+<div>- Bagi pihak pembeli: bisa mengirimkan komplain kepada pihak Paypal dalam waktu 45 hari jika barang yang dibeli belum sampai pada waktu yang ditentukan pihak penjual atau barang yang dikirim ternyata tidak sesuai dengan deskripsi barang yang diberikan oleh si penjual.</div>
+<br>
+<div>Jika si pembeli yang tidak puas bisa membuktikan bahwa si penjual melakukan penipuan (fraud) maka si pembeli akan mendapatkan pengembalian uang (charge back) dari perusahaan kartu kreditnya.</div>
+<div> </div>
+<div>- Bagi pihak penjual: terlindungi dari permintaan pengembalian uang atau komplain bohong dari si pembeli yang berniat buruk dengan mengaku telah mengirimkan uang yang ternyata tidak ada catatan bukti pembayaran dan catatan transaksi.</div>
+<br>
+<h2 id="mcetoc_1cvhlt4vf2">Cara Daftar Paypal</h2>
+<div>Sebelum proses membuat akun Paypal, pastikan terlebih dahulu anda sudah menyiapkan akun email ya. Kalau sudah siap, silakan ikuti langkah-langkahnya sebagai berikut.</div>
+<br>
+<ol>
+<li>Kunjungi alamat website <a href="https://www.paypal.com/id/home">Paypal Indonesia</a></li>
+<li>Silakan tekan tombol `Sign Up Now`.<img src="https://publii.id/media/posts/18/01_paypal-indonesia.jpg" alt="paypal indonesia" width="1080" height="607"></li>
+<li>Halaman baru terbuka, disitu ada dua pilihan akun Paypal yang bisa digunakan. Pilihan sebelah kiri ditujukan bagi pengguna pribadi untuk keperluan belanja online, sedangkan pilihan yang sebelah kanan ditujukan bagi pengguna pribadi atau pebisnis untuk keperluan menerima pembayaran lewat Paypal. Silakan pilih sesuai dengan keperluan anda. Pada tutorial ini, saya memilih tombol `Get Started` yang sebelah kiri.<img src="https://publii.id/media/posts/18/02_pilih-akun-paypal.jpg" alt="pilih akun paypal" width="1080" height="607"></li>
+<li>Anda akan diarahkan menuju halaman baru yang terdapat kolom isian alamat email dan password, silakan masukkan alamat email dan password anda dikolom tersebut. Lalu tekan tombol `Continue`.<img src="https://publii.id/media/posts/18/03_personal-account.jpg" alt="personal account" width="1080" height="607"></li>
+<li>Halaman baru akan terbuka lagi, silakan masukkan nama lengkap anda, tanggal lahir, nomor identitas KTP, alamat anda, serta data-data yang diperlukan disitu. Setelah anda masukkan semuanya, silakan centang `Paypal's User Agreement and Privacy Policy`, lalu tekan tombol `Agree and Create Account`.<img src="https://publii.id/media/posts/18/04_data-diri-paypal.jpg" alt="data diri paypal" width="1080" height="607"></li>
+<li>Pada halaman baru yang terbuka, Anda disuruh menghubungkan kartu debit atau kartu kredit anda agar akun Paypal yang telah dibuat bisa langsung terverifikasi. Jika anda sudah memiliki kartu kredit, silakan masukkan nomor kartu kredit, tanggal kadaluarsanya, dan kode CVV pada kolom yang telah disediakan.</li>
+<li><img src="https://publii.id/media/posts/18/05_link-card-paypal.jpg" alt="link card paypal" width="1080" height="607">Namun pada tutorial ini, saya berasumsi bahwa anda belum memiliki kartu kredit sehingga saya akan menekan link `I'll do it later` yang terletak dibawah tombol `Link Card`.</li>
+</ol>
+<p>Tapi gak usah bingung cara verifikasinya, karena saya akan membimbing anda cara verikasi akun Paypal tanpa kartu kredit di artikel yang terpisah.</p>
+<ol>
+<li>Proses selanjutnya yaitu silakan menekan link `account` pada bagian bawah halaman baru yang terbuka.<img src="https://publii.id/media/posts/18/06_paypal-link-account.jpg" alt="paypal link account" width="1080" height="607"></li>
+<li>Anda akan diarahkan menuju halaman `myaccount` dan anda harus mengkonfirmasi alamat email anda untuk mengaktifkan akun Paypal yang telah anda buat.<img src="https://publii.id/media/posts/18/07_paypal-myaccount.jpg" alt="paypal myaccount" width="1080" height="607"></li>
+</ol>
+Sampai disini proses pembuatan akun Paypal anda telah selesai. Tetapi agar akun tersebut bisa digunakan untuk melakukan transaksi, harus di`verifikasi` terlebih dahulu oleh pihak Paypal.<br>
+<div> </div>
+<div>Untuk melakukan proses `verifikasi` akun Paypal anda tersebut, silakan baca selengkapnya bagaimana <a href="../../../../../cara-verifikasi-akun-paypal">cara verifikasi akun Paypal tanpa kartu kredit</a>.</div>
+<br>
+<div>Jika masih ada langkah-langkah yang belum anda pahami, silakan ajukan pertanyaan pada kolom komentar dibawah ini.</div>
+<br>
+<div>Dan jangan lupa untuk membagikan informasi ini agar manfaatnya juga bisa dirasakan sahabat-sahabat anda yang lain.</div>
+            ]]>
+        </content>
+    </entry>
+    <entry>
+        <title>Cara Registrasi atau Daftar Akun Jenius dengan Mudah</title>
+        <author>
+            <name>Akhlis</name>
+        </author>
+        <link href="https://publii.id/cara-registrasi-atau-daftar-akun-jenius-dengan-mudah/"/>
+        <id>https://publii.id/cara-registrasi-atau-daftar-akun-jenius-dengan-mudah/</id>
+
+        <updated>2018-12-25T10:18:36+07:00</updated>
+            <summary>
+                <![CDATA[
+                        <img src="https://publii.id/media/posts/17/registrasi-akun-jenius.jpg" alt="" />
+                    Jenius merupakan aplikasi keuangan berbasis sistem operasi android dan iOS yang sedang populer saat ini karena fitur-fiturnya yang menarik. Aplikasi Jenius ini dikeluarkan oleh&hellip;
+                ]]>
+            </summary>
+        <content type="html">
+            <![CDATA[
+                    <img src="https://publii.id/media/posts/17/registrasi-akun-jenius.jpg" alt="" />
+                <div>Jenius merupakan aplikasi keuangan berbasis sistem operasi android dan iOS yang sedang populer saat ini karena fitur-fiturnya yang menarik. Aplikasi Jenius ini dikeluarkan oleh Bank BTPN yang dapat kita gunakan untuk keperluan transaksi apapun.</div>
+<br>
+<div>Melalui aplikasi Jenius ini, anda bisa transfer uang kesesama Bank BTPN atau antar rekening bank, beli pulsa, belanja melalui toko online, menabung, membayar tagihan, dan bisa juga digunakan untuk verifikasi akun Paypal dengan kartu m-card. Karena kartu debit yang dikeluarkan Jenius itu berjenis VISA.</div>
+<br>
+<div>Jika anda masih penasaran ingin tahu apa sih aplikasi Jenius itu? apa keuntungan yang bisa kamu dapatkan? yuk baca informasi selengkapnya <a href="../../../../../cara-mendapatkan-kartu-debit-jenius-gratis">apa itu aplikasi Jenius?</a></div>
+<br>
+<div>Syarat utama untuk mendaftar akun Jenius ini, anda harus memiliki smartphone android atau iOS ya. Tapi saya yakin anda pasti sudah memilikinya.</div>
+<br>
+<div>Selanjutnya kamu bisa langsung download dan instal aplikasinya melalui Google Play Store atau Apple App Store.</div>
+<br>
+<div>Yang perlu diingat dalam proses registrasi ini, kamu harus memasukkan kode $cashtag sponsor kamu, yaitu `$publii` (tanpa tanda kutip) agar nanti kita sama-sama mendapat bonus saldo Rp. 50.000 setelah akun anda aktif. Lumayan loh bisa buat beli pulsa lewat aplikasi Jenius anda nanti.</div>
+<h2 id="mcetoc_1cvhltn8b0">Cara Daftar Akun Jenius:</h2>
+<br>
+<ol>
+<li>Siapkan alat-alat yang dibutuhkan dalam proses pendaftaran akun Jenius seperti KTP, wajah anda (iya wajah anda untuk selfie nantinya), tanda tangan anda diatas selembar kertas, NPWP (bagi yang sudah memilikinya).</li>
+<li>Smartphone berbasis android atau iOS (iPhone dan iPad).</li>
+<li>Download dan instal aplikasi Jenius terlebih dahulu disini, - Pengguna Android: via Google Play Store jeni.us/invand - Pengguna iOS: via Apple App Store jeni.us/invios</li>
+<li>Setelah aplikasi terinstal, buka aplikasi Jenius kemudian lakukan pendaftaran dengan menekan tombol `REGISTER`, kemudian pilih bahasa yang kamu inginkan, pilih saja `INA`. kemudian tekan `LANJUT`.<img src="https://publii.id/media/posts/17/register-akun-jenius.jpg" alt="register akun jenius" width="1200" height="711"></li>
+<li>Masukkan email anda (contoh: nettren.id@gmail.com) dan nomor HP anda (dengan menyertakan kode +62 sebagai pengganti angka nol) pada kolom yang disediakan. Kemudian tekan `LANJUT`.<img src="https://publii.id/media/posts/17/kolom-email.jpg" alt="kolom email" width="1200" height="720"></li>
+<li>Halaman baru akan terbuka, disitu anda harus mengunggah foto KTP, NPWP, wajah selfie dalam keadaan memegang KTP, dan tanda tangan anda. Jika anda belum memiliki NPWP, silahkan centang pilihan `Saya sedang tidak membawa NPWP`. Selanjutnya, tekan tombol KTP untuk mengambil foto KTP (pastikan tulisan pada foto KTP terbaca), kemudian tekan `LANJUT` untuk melanjutkan atau pilih `FOTO ULANG` jika foto anda belum bagus.<img src="https://publii.id/media/posts/17/upload-ktp.jpg" alt="upload ktp" width="1200" height="720"></li>
+<li>Proses selanjutnya yaitu tekan tombol `Selfie + KTP` untuk mengambil foto selfie wajah sambil memegang KTP ditangan anda (pastikan wajah anda berada tepat di area oval dan KTP-mu berada diarea kotak). Kemudian tekan `LANJUT`.<img src="https://publii.id/media/posts/17/selfie-ktp.jpg" alt="selfie ktp" width="1080" height="616"></li>
+<li>Selanjutnya tekan tombol `Tanda Tangan` untuk mengambil foto tanda tangan yang telah anda siapkan diatas kertas sebelumnya. Lalu tekan `LANJUT` untuk melanjutkan proses selanjutnya. Kemudian tekan tombol `UPLOAD`.<img src="https://publii.id/media/posts/17/tanda-tangan.jpg" alt="tanda tangan" width="1080" height="616"></li>
+<li>Proses selanjutnya anda harus mengisi biodata diri pada kolom yang telah disediakan. Tulis nama anda, kode $cashtag (isi nama yang kamu suka, misal $publii), nama panggilan, dan semua data yang diperlukan disitu. Pastikan data yang anda masukkan sesuai dengan data diri anda yang sebenarnya, terus tekan tombol `LANJUT` untuk melanjutkan proses berikutnya.<img src="https://publii.id/media/posts/17/biodata-diri.jpg" alt="biodata diri" width="1080" height="616"></li>
+<li>Halaman baru terbuka, silahkan masukkan password, pertanyaan keamanan disertai dengan jawabanmu (harus selalu anda ingat pertanyaan dan jawabanmu itu ya), dan PIN 6 angka. Dalam pemilihan password, anda bisa menentukannya sendiri dengan kombinasi dari huruf kapital, huruf kecil, angka, dan tanda baca (contoh: Jl-mawarnomor4). Selanjutnya tekan tombol `SUBMIT` untuk proses berikutnya.<img src="https://publii.id/media/posts/17/password.jpg" alt="password" width="1080" height="616"></li>
+<li>Proses selanjutnya anda harus mengisi kolom pekerjaan beserta data-data yang dibutuhkannya, misalnya industri pekerjaan, jabatan, jumlah penghasilan per bulan, dan lain-lainnya. Silahkan isi semua kolom tersebut sesuai dengan data anda sebenarnya. Setelah itu centang syarat dan ketentuan yang diberikan oleh Bank BTPN. selanjutnya tekan tombol `BUKA AKUN SEKARANG`.<img src="https://publii.id/media/posts/17/buka-akun.jpg" alt="buka akun" width="1080" height="616"></li>
+<li>Halaman baru terbuka dan pihak Jenius akan mengirimkan kode verifikasi pada nomor handphone yang telah anda gunakan untuk daftar tadi. Silahkan masukkan kode verifikasi yang telah anda terima itu pada kolom yang disediakan. Selanjutnya tekan tombol `SAMBUNGKAN PERANGKAT`.<img src="https://publii.id/media/posts/17/sambungkan-perangkat.jpg" alt="sambungkan perangkat" width="1080" height="616"></li>
+<li>Anda diarahkan menuju halaman baru lagi, disitu anda disuruh memasukkan kode $cashtag sponsor anda atau teman yang mengajak anda bergabung yaitu `$publii`, lalu tekan kirim.<img src="https://publii.id/media/posts/17/kode-cashtag.jpg" alt="kode cashtag" width="1080" height="616"></li>
+<li>Sampai disini proses pembuatan akun Jenius anda sudah selesai, namun akun anda harus diaktivasi terlebih dahulu oleh pihak bank BTPN sebelum bisa anda gunakan untuk melakukan transaksi. Anda bisa memanggil crew Jenius atau mendatangi kantor cabang Bank BTPN terdekat di kota anda.<img src="https://publii.id/media/posts/17/aktifasi-jenius.jpg" alt="aktifasi jenius" width="1080" height="616"></li>
+</ol>
+<br>
+<div>Jika anda berdomisili di wilayah JABODETABEK, nanti pihak Jenius akan menghubungi anda untuk membuat jadwal ketemuan dengan anda. Anda tidak perlu keluar rumah untuk bertemu dengan petugasnya itu, karena pihak Jenius akan mendatangi rumah anda untuk mengantar kartu debit Jenius dan mengaktifasi akun anda.</div>
+<br>
+<div>Namun jika anda berdomisili diluar JABODETABEK, maka anda diharuskan mendatangi cabang Bank BTPN terdekat di kota anda. Untuk mengetahui lokasi cabang banknya itu anda bisa bertanya ke cs Jenius atau mengunjungi website resmi Jenius <a href="https://www.jenius.com/locations">disini</a>.</div>
+<br>
+<div>Setelah akun Jenius anda berhasil diaktifasi oleh petugas Bank BTPN, selanjutnya pihak Jenius akan menghubungi anda untuk mengkonfirmasi alamat rumah anda sebagai tujuan pengiriman kartu debit Jenius. Kartu debit Jenius akan terkirim ke rumah anda maksimal 13 hari kerja setelah akun anda diaktifasi.</div>
+<br>
+<div>Yang paling menarik dengan aplikasi Jenius ini, anda tidak dipungut biaya sedikit pun mulai dari proses pendaftaran, aktifasi akun, maupun untuk biaya pengiriman kartu debit Jenius. Semua bisa anda dapatkan secara gratis.</div>
+<br>
+<div>Jika anda tertarik untuk mendapatkan kartu debit Jenius tersebut, silahkan ikuti langkah-langkahnya seperti yang saya jelaskan diatas. Dan rasakan juga pengalaman menabung dan mengatur semua kebutuhan transaksi anda hanya melalui sentuhan ujung jari anda.</div>
+<br>
+<div>Dan jangan lupa silahkan bagikan informasi ini ke teman-teman anda agar mereka juga bisa merasakan manfaatnya seperti yang anda dapatkan saat ini.</div>
+            ]]>
+        </content>
+    </entry>
+</feed>
